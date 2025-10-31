@@ -1,117 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Four Phases of Us</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Four Phases of Knowing You</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Cormorant+Garamond:ital@1&family=Inter:wght@300&display=swap');
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Lora:wght@400&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #fdfaf6, #e6dccb);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #2f2f2f;
+    }
 
-<style>
-  body {
-    margin: 0;
-    background: #FAF9F6;
-    color: #2E2E2E;
-    font-family: 'Lora', serif;
-    overflow-x: hidden;
-  }
-  section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-  }
-  h1, h2 {
-    font-family: 'Playfair Display', serif;
-    color: #C89FA3;
-    margin-bottom: 20px;
-  }
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  p {
-    max-width: 700px;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    white-space: pre-line;
-  }
-  .phase-1 { background: linear-gradient(to bottom, #fdf6f0, #f8ede3); }
-  .phase-2 { background: linear-gradient(to bottom, #fffaf0, #fce1e4); }
-  .phase-3 { background: linear-gradient(to bottom, #ede0dd, #dcd3d2); }
-  .phase-4 { background: linear-gradient(to bottom, #fefdfb, #ffffff); }
-  footer {
-    text-align: center;
-    font-style: italic;
-    color: #7B7B7B;
-    padding: 60px 0;
-  }
-  #audioControl {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #C89FA3;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-  }
-</style>
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      margin-top: 10px;
+      opacity: 0;
+      animation: slideUp 3s 2s forwards;
+    }
+
+    .rudraksh {
+      margin-top: 60px;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #a0522d 20%, #4b2e05 80%);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      opacity: 0;
+      animation-delay: 4s;
+      animation-fill-mode: forwards;
+    }
+
+    .enter-btn {
+      margin-top: 40px;
+      opacity: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #5a4220;
+      border: none;
+      background: none;
+      cursor: pointer;
+      animation: fadeIn 2s 6s forwards;
+    }
+
+    .enter-btn:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+  </style>
 </head>
+
 <body>
-
-<button id="audioControl">♪</button>
-<audio id="bgMusic" loop>
-  <source src="yourmusic.mp3" type="audio/mpeg">
-</audio>
-
-<section data-aos="fade-up" class="intro">
-  <h1>For Payal</h1>
-  <p><em>The Four Phases of Us</em></p>
-</section>
-
-<section data-aos="fade-up" class="phase-1">
-  <h2>Before You</h2>
-  <p>[Poem 1]</p>
-</section>
-
-<section data-aos="fade-up" class="phase-2">
-  <h2>When You Happened</h2>
-  <p>[Poem 2]</p>
-</section>
-
-<section data-aos="fade-up" class="phase-3">
-  <h2>When We Faltered</h2>
-  <p>[Poem 3]</p>
-</section>
-
-<section data-aos="fade-up" class="phase-4">
-  <h2>Still You</h2>
-  <p>[Poem 4]</p>
-</section>
-
-<footer>
-  If you ever read this again, know it was always you. — A
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 1200, once: true });
-
-  const audio = document.getElementById('bgMusic');
-  const btn = document.getElementById('audioControl');
-  let playing = false;
-  btn.addEventListener('click', () => {
-    if (playing) { audio.pause(); btn.textContent = '♪'; }
-    else { audio.play(); btn.textContent = '❚❚'; }
-    playing = !playing;
-  });
-</script>
-
+  <h1>The Four Phases of Knowing You</h1>
+  <h2>Every version of you felt like a different kind of light.</h2>
+  <div class="rudraksh"></div>
+  <button class="enter-btn" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+    Enter the Phases →
+  </button>
 </body>
 </html>
+
