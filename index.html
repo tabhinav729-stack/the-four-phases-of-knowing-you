@@ -1,108 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Four Phases of Knowing You</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Four Phases</title>
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Dancing+Script:wght@600&family=Inter:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
 
     body {
       margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: linear-gradient(to bottom, #fdfaf6, #f2e8d9);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #2c2c2c;
-      overflow: hidden;
-      text-align: center;
-    }
-
-    .line {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.4rem;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-    }
-
-    .line:nth-child(1) { animation-delay: 0.5s; }
-    .line:nth-child(2) { animation-delay: 3s; }
-    .line:nth-child(3) { animation-delay: 5.5s; }
-    .line:nth-child(4) { animation-delay: 8s; }
-    .line:nth-child(5) { animation-delay: 10.5s; }
-    .line:nth-child(6) { animation-delay: 13s; }
-
-    h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      margin-top: 60px;
-      opacity: 0;
-      animation: fadeIn 3s 15s forwards;
+      background-color: #000;
+      color: white;
+      overflow-x: hidden;
     }
 
-    h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #4b3d2a;
-      margin-top: 10px;
-      opacity: 0;
-      animation: fadeIn 2s 17s forwards;
+    .intro {
+      text-align: center;
+      padding: 8vh 2rem 3rem;
     }
 
-    .rudraksh {
-      margin-top: 60px;
-      width: 30px;
-      height: 30px;
-      background: radial-gradient(circle at 30% 30%, #7b3f00, #4a2301 70%, #2b1500 100%);
-      border-radius: 50%;
-      box-shadow:
-        inset 0 0 4px #2b1500,
-        0 0 15px 6px rgba(160, 82, 45, 0.35);
-      opacity: 0;
-      animation: fadeIn 2s 19s forwards, softGlow 3s infinite 21s;
-    }
-
-    .scroll-note {
-      margin-top: 40px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
+    .intro h1 {
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: #fff;
       letter-spacing: 1px;
-      opacity: 0;
-      color: #5a4220;
-      animation: fadeIn 2s 23s forwards;
+      margin-bottom: 0.5rem;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .intro p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      margin-top: 0;
     }
 
-    @keyframes softGlow {
-      0%, 100% { box-shadow: 0 0 15px 6px rgba(160, 82, 45, 0.3); }
-      50% { box-shadow: 0 0 25px 8px rgba(160, 82, 45, 0.5); }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: brightness(70%);
+      transition: filter 0.4s ease, transform 0.4s ease;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    }
+
+    .card h2 {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 500;
+      z-index: 2;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .card:hover img {
+      filter: brightness(90%);
+      transform: scale(1.05);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
     }
   </style>
 </head>
 
 <body>
-  <!-- Maybe one day she’ll scroll again. -->
-  
-  <div class="line">There’s no beginning here.</div>
-  <div class="line">Just a few moments I kept safe.</div>
-  <div class="line">Four of them, to be exact.</div>
-  <div class="line">Each one — a version of you.</div>
-  <div class="line">You won’t find closure here.</div>
-  <div class="line">Only calm.</div>
+  <section class="intro">
+    <h1>Four words. One story.</h1>
+    <p>Faith. Grace. Warmth. Love.<br>“If you ever find your way back — you’ll know I never left.”</p>
+  </section>
 
-  <h1>The Four Phases of Knowing You</h1>
-  <h2>a quiet thing built for you to return to, whenever you need to.</h2>
+  <section class="gallery">
+    <div class="card" onclick="window.location.href='faith.html'">
+      <img src="https://images.unsplash.com/photo-1603791452906-9d97a0a8a8c5?auto=format&fit=crop&w=800&q=80" alt="Faith">
+      <h2>Faith</h2>
+    </div>
 
-  <div class="rudraksh"></div>
-  <div class="scroll-note">Scroll slowly. It remembers you gently.</div>
+    <div class="card" onclick="window.location.href='grace.html'">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Grace">
+      <h2>Grace</h2>
+    </div>
+
+    <div class="card" onclick="window.location.href='warmth.html'">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Warmth">
+      <h2>Warmth</h2>
+    </div>
+
+    <div class="card" onclick="window.location.href='love.html'">
+      <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=800&q=80" alt="Love">
+      <h2>Love</h2>
+    </div>
+  </section>
+
+  <footer class="footer">
+    In case you ever change your mind — my world still knows your name.
+  </footer>
 </body>
 </html>
-
