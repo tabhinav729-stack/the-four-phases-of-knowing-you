@@ -1,185 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Four Phases</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Four Phases of You</title>
   <style>
-    :root{
-      --bg1: #FDF1F3;         /* soft blush */
-      --text: #2E2E2E;        /* warm charcoal */
-      --accent: #D99393;      /* dusty rose accent */
-      --muted: rgba(46,46,46,0.7);
-      --rudraksh-url: "https://images.unsplash.com/photo-1590959651378-25b25c64f69a?auto=format&fit=crop&w=1200&q=80";
-      /* Replace the URL above with your uploaded rudraksh image path (no quotes) if you have one. */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #f8d7da, #fff3f3);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 2s ease-in-out;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg1);
-      color: var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:3rem 1.5rem;
+    .intro {
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1.5s ease;
     }
 
-    /* full-bleed intro card */
-    .intro-wrap{
-      width:100%;
-      max-width:920px;
-      position:relative;
-      border-radius:14px;
-      padding:48px 40px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.9));
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      overflow:hidden;
+    .rudraksh {
+      width: 120px;
+      animation: slowRotate 10s linear infinite;
+      margin-bottom: 30px;
     }
 
-    /* watermark rudraksh (soft, blurred and subtle) */
-    .intro-wrap::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image: url(var(--rudraksh-url));
-      background-position: center;
-      background-size: cover;
-      opacity: 0.08;
-      filter: blur(6px) saturate(60%);
+    @keyframes slowRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #4a2f2f;
+      margin: 10px 0;
+    }
+
+    p {
+      color: #5e4444;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #f4a7a7, #f6d1d1);
+      border: none;
+      border-radius: 25px;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #4a2f2f;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    button:hover {
       transform: scale(1.05);
-      pointer-events:none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
-    /* soft vignette */
-    .intro-wrap::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0) 0%, rgba(0,0,0,0.02) 100%);
-      pointer-events:none;
+    .fade-out {
+      opacity: 0;
     }
 
-    .content{
-      position:relative; /* above watermark */
-      z-index:1;
-      text-align:center;
-      max-width:760px;
-      margin:0 auto;
+    .phases {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      opacity: 0;
+      transition: opacity 2s ease;
     }
 
-    .meta{
-      font-family: "Playfair Display", serif;
-      font-size:1.05rem;
-      color: var(--muted);
-      letter-spacing:0.4px;
-      margin-bottom:18px;
-      opacity:0;
-      transform: translateY(6px);
-      animation: fadeUp 600ms 150ms ease forwards;
+    .tab {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #4a2f2f;
+      transition: background 0.3s, transform 0.3s;
     }
 
-    .head{
-      font-family: "Playfair Display", serif;
-      font-size:2rem;
-      line-height:1.05;
-      margin:0 auto 18px;
-      color: var(--text);
-      opacity:0;
-      transform: translateY(8px);
-      animation: fadeUp 700ms 350ms ease forwards;
+    .tab:hover {
+      background: #f6d1d1;
+      transform: translateY(-3px);
     }
 
-    .body-lines{
-      margin: 12px auto 26px;
-      max-width:680px;
-      font-size:1rem;
-      line-height:1.6;
-      color:var(--text);
-      opacity:0;
-      transform: translateY(10px);
-      animation: fadeUp 700ms 550ms ease forwards;
-    }
-
-    .body-lines p{
-      margin:0 0 14px;
-      font-weight:300;
-    }
-
-    .cta{
-      margin-top:18px;
-      opacity:0;
-      transform: translateY(10px);
-      animation: fadeUp 700ms 900ms ease forwards;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:12px 28px;
-      border-radius:999px;
-      border:1px solid rgba(217,147,147,0.18);
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-      color:var(--text);
-      font-weight:600;
-      font-family: "Inter", sans-serif;
-      letter-spacing:0.6px;
-      cursor:pointer;
-      transition: transform .18s ease, box-shadow .18s ease;
-      box-shadow: 0 6px 18px rgba(217,147,147,0.06);
-    }
-
-    .btn:hover{
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(217,147,147,0.12);
-    }
-
-    /* small footer line inside card */
-    .note{
-      margin-top:18px;
-      font-size:0.9rem;
-      color:var(--muted);
-    }
-
-    @keyframes fadeUp{
-      from{ opacity:0; transform:translateY(10px) }
-      to{ opacity:1; transform:translateY(0) }
-    }
-
-    /* responsive tweaks */
-    @media (max-width:640px){
-      .intro-wrap{ padding:28px }
-      .head{ font-size:1.55rem }
-      .btn{ width:100% }
+    .show {
+      display: flex;
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <main class="intro-wrap" role="main" aria-label="Intro: Four phases">
-    <div class="content">
-      <div class="meta">Four words. One story.</div>
+  <div class="intro" id="intro">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Rudraksha_Bead.jpg" alt="Rudraksh Bead" class="rudraksh">
+    <h1>Four Phases of You</h1>
+    <p>Start wherever you wish. You’ll find a bit of us in each.</p>
+    <button id="begin">Begin →</button>
+  </div>
 
-      <h1 class="head">This space holds four poems.</h1>
+  <div class="phases" id="phases">
+    <div class="tab">The Bead That Stayed</div>
+    <div class="tab">The Calm Between Chaos</div>
+    <div class="tab">The Shared Laughter</div>
+    <div class="tab">Where My Heart Still Waits</div>
+  </div>
 
-      <div class="body-lines" aria-hidden="false">
-        <p>Each one belongs to a phase — a beginning, a becoming, a bond, and what came after.</p>
-        <p>Nothing to decode here. Just moments that meant something, arranged gently in their own time.</p>
-        <p><strong>Start wherever you wish. You’ll find a bit of us in each.</strong></p>
-      </div>
+  <script>
+    const beginBtn = document.getElementById('begin');
+    const intro = document.getElementById('intro');
+    const phases = document.getElementById('phases');
 
-      <div class="cta">
-        <!-- update the href to the actual page that holds the four tabs -->
-        <a class="btn" href="phases.html" role="button">Begin</a>
-      </div>
-
-      <div class="note" aria-hidden="true">Made with care.</div>
-    </div>
-  </main>
+    beginBtn.addEventListener('click', () => {
+      intro.classList.add('fade-out');
+      setTimeout(() => {
+        intro.style.display = 'none';
+        document.body.style.background = 'linear-gradient(180deg, #fff3f3, #f8d7da)';
+        phases.classList.add('show');
+      }, 1500);
+    });
+  </script>
 </body>
 </html>
+
