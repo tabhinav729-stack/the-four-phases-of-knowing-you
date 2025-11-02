@@ -1,34 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Payal</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>for Payal</title>
 
-<!-- Font and Style -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Cormorant Garamond', serif;
-    color: #fff;
-    background: radial-gradient(circle at center, #ffb6c1 0%, #ff69b4 40%, #2b0015 100%);
-    height: 100vh;
-    overflow: hidden;
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;font-family:"Cormorant Garamond",serif;}
+  body{
+    background-color:#f5e8e6;
+    color:#4b2e2e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 1s ease;
   }
 
-  /* Pink mist animation */
-  body::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,192,203,0.3) 0%, rgba(255,182,193,0) 70%);
-    animation: mist 15s ease-in-out infinite alternate;
-    z-index: 0;
+  section{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    opacity:0;
+    transform:scale(1.02);
+    pointer-events:none;
+    transition:opacity 1s ease,transform 1s ease;
+  }
+  section.active{
+    opacity:1;
+    transform:scale(1);
+    pointer-events:auto;
   }
 
-  @keyframes mist {
-    0% { transform: translate(-10%, -10%) scale(1); opacity: 0.8; }
-    100% { transform: translate(10%, 10%) scale(1.2); opacity: 0.4; }
+  /* ---------- INTRO (animated reveal) ---------- */
+  .card{
+    max-width:920px;
+    padding:40px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.75);
+    box-shadow:0 20px 60px rgba(0,0,0,0.06);
+    text-align:center;
+  }
+  h1{font-size:2.1rem;margin-bottom:18px;opacity:0;transform:translateY(18px);animation:floatUp .9s .2s forwards;}
+  .line{font-size:1.05rem;line-height:1.65;color:#4b2e2e;opacity:0;transform:translateY(22px);}
+  .line.l1{animation:floatUp 1s .8s forwards;}
+  .line.l2{animation:floatUp 1s 2s forwards;}
+  .line.l3{animation:floatUp 1s 3.6s forwards;}
+  .line.l4{animation:floatUp 1s 5s forwards;}
+  .line.l5{animation:floatUp 1s 6.6s forwards;font-weight:600;}
+  @keyframes floatUp{to{opacity:1;transform:translateY(0);}}
+
+  .begin{
+    display:inline-block;
+    margin-top:28px;
+    padding:10px 28px;
+    border-radius:999px;
+    border:2px solid #4b2e2e;
+    background:transparent;
+    color:#4b2e2e;
+    font-weight:600;
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(20px);
+    animation:floatUp 1s 8s forwards;
+  }
+  .begin:hover{background:#4b2e2e;color:#f5e8e6;}
+  .signature{margin-top:20px;font-style:italic;color:rgba(75,46,46,0.85);opacity:0;animation:fadeIn 1s 8.8s forwards;}
+  @keyframes fadeIn{to{opacity:0.9}}
+
+  /* ---------- POEM MENU ---------- */
+  .menu h1{font-size:2rem;color:#6b3e55;margin-bottom:1.5rem;letter-spacing:1px;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.5rem;
+    width:80%;
+    max-width:900px;
+  }
+  .menu-card{
+    position:relative;
+    height:220px;
+    border-radius:16px;
+    overflow:hidden;
+    cursor:pointer;
+    background:#f3c6d3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:1.3rem;
+    letter-spacing:1px;
+    text-shadow:0 2px 4px rgba(0,0,0,0.3);
+    transition:transform 0.6s ease,box-shadow 0.6s ease;
+    z-index:2;
+  }
+  .menu-card:hover{transform:scale(1.03);box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+  .menu-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.25);
+    pointer-events:none; /* ✅ lets clicks pass through */
+  }
+  .menu-card span{position:relative;z-index:2;}
+
+  /* ---------- POEMS ---------- */
+  .poem-page h1{font-size:2rem;letter-spacing:1px;margin-bottom:2rem;color:#8a3b5e;}
+  .poem{max-width:650px;line-height:1.8;font-size:1.1rem;white-space:pre-line;margin-bottom:2rem;}
+  .transition{font-style:italic;margin-bottom:2rem;color:#6b2f4b;font-size:1rem;opacity:0.8;}
+  .buttons{display:flex;justify-content:center;gap:1rem;}
+  button{
+    border:none;
+    background-color:#8a3b5e;
+    color:white;
+    padding:0.7rem 1.5rem;
+    border-radius:30px;
+    font-size:0.95rem;
+    cursor:pointer;
+    transition:background-color 0.3s ease,transform 0.3s ease;
+  }
+  button:hover{background-color:#5b253d;transform:scale(1.05);}
+
+  /* ---------- FINAL ---------- */
+  .final h1{
+    font-size:1.6rem;
+    max-width:700px;
+    line-height:1.8;
+    margin-bottom:2rem;
+    text-align:center;
+  }
+  .final .signature{
+    font-style:italic;
+    font-size:1.1rem;
+    color:#7a3b56;
+    margin-bottom:3rem;
+  }
+
+  @media(max-width:640px){
+    h1{font-size:1.6rem}
+    .menu-card{height:180px;font-size:1.1rem}
+    .poem{font-size:1rem}
+  }
+</style>
+</head>
+<body>
+
+<audio id="bgAudio" autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2023/04/03/audio_35a9d3f0a0.mp3?filename=dreamy-piano-ambient-144998.mp3" type="audio/mpeg">
+</audio>
+
+<!-- INTRO -->
+<section id="intro" class="active">
+  <div class="card">
+    <h1>This space holds four poems.</h1>
+    <div class="line l1">Each one belongs to a phase — a beginning, a becoming, a bond, and something that still lingers.</div>
+    <div class="line l2">Nothing to decode here.</div>
+    <div class="line l3">Just moments that meant something, arranged gently in their own time.</div>
+    <div class="line l4">Start wherever you wish.</div>
+    <div class="line l5">You’ll find a bit of us in each.</div>
+    <button class="begin" onclick="goTo('menu')">Begin →</button>
+    <div class="signature">for Payal.</div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu">
+  <h1>Choose a Chapter</h1>
+  <div class="grid">
+    <div class="menu-card" onclick="goTo('spark')"><span>The First Spark</span></div>
+    <div class="menu-card" onclick="goTo('calm')"><span>The Keeper of Calm</span></div>
+    <div class="menu-card" onclick="goTo('friend')"><span>The Friend Who Stayed</span></div>
+    <div class="menu-card" onclick="goTo('love')"><span>The Quiet Kind of Love</span></div>
+  </div>
+</section>
+
+<!-- SPARK -->
+<section id="spark" class="poem-page">
+  <h1>The First Spark</h1>
+  <div class="poem">
+In the hush before everything began,  
+There was laughter too shy to stay,  
+A glance that lingered longer than reason,  
+And time learning to walk your way.  
+
+Every word felt like discovery,  
+Every silence—something said.  
+You smiled, and the air remembered,  
+That beginnings never really end.  
+
+Maybe the universe sighed that night,  
+Letting two stars bump into fate,  
+And I—too lost to question why,  
+Just learned what it means to wait.
+  </div>
+  <div class="transition">“Moments have a way of finding what they were meant to become.”</div>
+  <div class="buttons">
+    <button onclick="goTo('calm')">Next Phase →</button>
+    <button onclick="goTo('menu')">Back to All Poems</button>
+  </div>
+</section>
+
+<!-- CALM -->
+<section id="calm" class="poem-page">
+  <h1>The Keeper of Calm</h1>
+  <div class="poem">
+There were days when silence spoke,  
+Louder than our words could try,  
+You steadied the storm I carried,  
+With just a look, with just a sigh.  
+
+You taught me that peace was real,  
+That not all warmth must burn,  
+Some love stays still and listens,  
+Waiting for hearts to learn.  
+
+And in your calm, I found my breath,  
+A rhythm I’d almost lost —  
+To care without demand or fear,  
+Is love without the cost.
+  </div>
+  <div class="transition">“Peace sometimes grows roots — and turns into something deeper.”</div>
+  <div class="buttons">
+    <button onclick="goTo('spark')">← Back</button>
+    <button onclick="goTo('final')">Next →</button>
+  </div>
+</section>
+
+<!-- FRIEND -->
+<section id="friend" class="poem-page">
+  <h1>The Friend Who Stayed</h1>
+  <div class="poem">
+You came quietly — no grand arrival,  
+Just presence, gentle and near,  
+And stayed long after reasons faded,  
+Like a song that refuses to disappear.  
+
+You knew the cracks and didn’t flinch,  
+The storms and still held ground,  
+You taught me that love’s truest form,  
+Is sometimes friendship, profound.
+  </div>
+  <div class="transition">“Sometimes, staying is louder than saying.”</div>
+  <div class="buttons">
+    <button onclick="goTo('menu')">← Back</button>
+    <button onclick="goTo('love')">Next →</button>
+  </div>
+</section>
+
+<!-- LOVE -->
+<section id="love" class="poem-page">
+  <h1>The Quiet Kind of Love</h1>
+  <div class="poem">
+It wasn’t fireworks — it was steady flame,  
+Soft and patient, yet it grew,  
+Not loud like stories people tell,  
+But honest, constant, true.  
+
+No promises carved in air,  
+Just a glance that understood,  
+That love, in its quietest form,  
+Can still mean all that it should.
+  </div>
+  <div class="transition">“And maybe that’s how forever begins — quietly.”</div>
+  <div class="buttons">
+    <button onclick="goTo('friend')">← Back</button>
+    <button onclick="goTo('final')">Next →</button>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section id="final" class="final">
+  <h1>If you ever lose your calm,<br>remember — you are someone’s peace.</h1>
+  <div class="signature">for Payal.</div>
+  <button onclick="goTo('menu')">Back to the beginning</button>
+</section>
+
+<script>
+  const sections = document.querySelectorAll("section");
+  function goTo(id){
+    sections.forEach(sec=>sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    if(id==="intro") document.body.style.background="#f5e8e6";
+    else if(id==="menu") document.body.style.background="#fbe8ec";
+    else if(id==="spark") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
+    else if(id==="calm") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
+    else if(id==="friend") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
+    else if(id==="love") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
+    else if(id==="final") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
+  }
+</script>
+
+</body>
+</html>
