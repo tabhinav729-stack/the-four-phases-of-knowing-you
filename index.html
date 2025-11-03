@@ -90,7 +90,7 @@
   }
   .music-btn:hover { background: #4b2e2e; color: #fff; }
 
-  /* ---------- MENU + POEMS (same as before) ---------- */
+  /* ---------- MENU + POEMS ---------- */
   .menu h1{font-size:2rem;color:#6b3e55;margin-bottom:1.5rem;letter-spacing:1px;}
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;width:80%;max-width:900px;}
   .menu-card{position:relative;height:220px;border-radius:16px;overflow:hidden;cursor:pointer;background:#f3c6d3;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;letter-spacing:1px;text-shadow:0 2px 4px rgba(0,0,0,0.3);transition:transform 0.6s ease,box-shadow 0.6s ease;z-index:2;}
@@ -136,9 +136,30 @@
   </div>
 </section>
 
-<!-- MENU + POEMS + FINAL (unchanged) -->
-<!-- Keep your existing MENU, SPARK, CALM, FRIEND, LOVE, FINAL sections here exactly as in your code -->
-<!-- ... same content ... -->
+<!-- MENU -->
+<section id="menu" class="menu">
+  <h1>Choose a Chapter</h1>
+  <div class="grid">
+    <div class="menu-card" onclick="goTo('spark')"><span>1. Naram per Atoot</span></div>
+    <div class="menu-card" onclick="goTo('calm')"><span>2. Narmi mei Taqat</span></div>
+    <div class="menu-card" onclick="goTo('friend')"><span>3. Sahaj aur Sachi</span></div>
+    <div class="menu-card" onclick="goTo('love')"><span>4. Sukoon Bhari Yaad</span></div>
+  </div>
+</section>
+
+<!-- POEM SECTIONS -->
+<section id="spark" class="poem-page">
+  <h1>Naram per Atoot</h1>
+  <div class="poem">Woh kehti hai, … (same text as before)</div>
+  <div class="transition">“Aur shayad isi liye, uske hone se duniya thodi behtar lagti hai.”</div>
+  <div class="buttons">
+    <button onclick="goTo('menu')">Back to All Poems</button>
+    <button onclick="goTo('calm')">Next Phase →</button>
+  </div>
+</section>
+
+<!-- Add your other poem sections (calm, friend, love, final) exactly as before -->
+<!-- ... your same text ... -->
 
 <script>
   const sections = document.querySelectorAll("section");
@@ -146,7 +167,6 @@
   const musicBtn = document.getElementById("musicBtn");
   let isPlaying = false;
 
-  // toggle play/pause
   musicBtn.addEventListener("click", () => {
     if(isPlaying){
       bgAudio.pause();
@@ -158,8 +178,7 @@
     isPlaying = !isPlaying;
   });
 
-  // start music on Begin
-  function startMusicAndGo() {
+  function startMusicAndGo(){
     bgAudio.play();
     musicBtn.textContent = "Pause Music";
     isPlaying = true;
