@@ -169,13 +169,30 @@
     .menu-card{height:180px;font-size:1.1rem}
     .poem{font-size:1rem}
   }
+
+  /* 🎵 MUSIC BUTTON */
+  #musicBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #4b2e2e;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+  #musicBtn:hover {transform: scale(1.2);}
 </style>
 </head>
 <body>
 
-<audio id="bgAudio" autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2023/04/03/audio_35a9d3f0a0.mp3?filename=dreamy-piano-ambient-144998.mp3" type="audio/mpeg">
+<!-- 🎵 BACKGROUND MUSIC -->
+<audio id="bgAudio" loop>
+  <source src="https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/intro%2Bmenu.mp3" type="audio/mpeg">
 </audio>
+<button id="musicBtn">🎵</button>
 
 <!-- INTRO -->
 <section id="intro" class="active">
@@ -358,7 +375,6 @@ Aur chahe waqt ne hum dono ko thoda rukne pe majboor kiya ho,
 mera yakeen wahi hai yeh kahani adhoori nahi,
 bas rukkar saans le rahi hai.  
   </div>
-  <div class="transition">“And maybe that’s how forever begins — quietly.”</div>
   <div class="transition">“Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue..”</div>
   <div class="buttons">
     <button onclick="goTo('friend')">← Back</button>
@@ -375,6 +391,19 @@ bas rukkar saans le rahi hai.
 
 <script>
   const sections = document.querySelectorAll("section");
+  const audio = document.getElementById("bgAudio");
+  const musicBtn = document.getElementById("musicBtn");
+
+  musicBtn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      musicBtn.textContent = "🔇";
+    } else {
+      audio.pause();
+      musicBtn.textContent = "🎵";
+    }
+  });
+
   function goTo(id){
     sections.forEach(sec=>sec.classList.remove("active"));
     document.getElementById(id).classList.add("active");
@@ -382,11 +411,4 @@ bas rukkar saans le rahi hai.
     else if(id==="menu") document.body.style.background="#fbe8ec";
     else if(id==="spark") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
     else if(id==="calm") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
-    else if(id==="friend") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
-    else if(id==="love") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
-    else if(id==="final") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
-  }
-</script>
-
-</body>
-</html>
+    else if(id==="friend") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4
