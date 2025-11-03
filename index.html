@@ -1,86 +1,201 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const pages = [
   {
     id: "intro",
     title: "The Four Phases of Knowing You",
-    content: "Every love story has its seasons — ours just had phases that felt timeless.",
+    content:
+      "Some stories aren’t told in chapters, they unfold in phases — each softer, deeper, and more alive than the last.",
     next: "menu",
-    music: "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/intro%2Bmenu.mp3",
+    music:
+      "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/intro%2Bmenu.mp3",
   },
   {
     id: "menu",
     title: "Choose a Phase",
-    content: "Each one holds a piece of us.",
+    content: "Each one holds a piece of her.",
     grid: true,
     options: [
-      { id: "poem1", label: "Narm Par Atoot" },
-      { id: "poem2", label: "Behta Raha" },
-      { id: "poem3", label: "Uske Baad" },
-      { id: "poem4", label: "The Greener Me" },
+      { id: "poem1", label: "Naram Par Atoot" },
+      { id: "poem2", label: "Narmi Mein Taqat" },
+      { id: "poem3", label: "Sahaj aur Sacchi" },
+      { id: "poem4", label: "Sukoon Bhari Yaad" },
     ],
-    music: "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/intro%2Bmenu.mp3",
+    music:
+      "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/intro%2Bmenu.mp3",
   },
+
+  // Poem 1
   {
     id: "poem1",
-    title: "Narm Par Atoot",
-    content: `Woh apni duniya khud sambhalne wali thi,  
-apni ladai khud ladti thi.  
-Phir bhi, pata nahi kaise,  
-mujhe apni kahani ka chhota sa hissa bana liya —  
-aur bas wahi, mere liye sab kuch tha.`,
-    afterthought: "— She never needed saving, yet she saved me anyway.",
+    title: "Naram Par Atoot",
+    content: `Woh kehti hai,  
+“Main thodi wierd hoon.”  
+Shayad isiliye samajh nahi aati,  
+bas mehsoos hoti hoon.  
+  
+Woh sabse alag hai —  
+shaant, par mazboot.  
+Uske andaaz mein masti hai,  
+aur soch mein gehraai.  
+  
+Usme ek ajeeb sa sukoon hai,  
+jaise zindagi ne use thoda zyada samjha ho.  
+Na shor, na dikhawa,  
+sirf ek noor, jo sab keh jaata hai.  
+  
+Taqat agar insaan hoti,  
+to woh Payal jaise hoti —  
+narm, par atoot;  
+bal bhi, aur shanti bhi.  
+  
+Usne sikhaya,  
+ki taqat ko ghamand se nahi,  
+sahajta se jeena chahiye.  
+  
+Woh hi to hai  
+ek roshni jo jalaati nahi,  
+par aaspaas sab kuch roshan kar deti hai.`,
+    afterthought: "“Aur shayad isi liye, uske hone se duniya thodi behtar lagti hai.”",
     next: "poem2",
     prev: "menu",
-    music: "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%201.mp3",
+    music:
+      "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%201.mp3",
   },
+
+  // Poem 2
   {
     id: "poem2",
-    title: "Behta Raha",
-    content: `Kabhi kabhi lagta tha,  
-zindagi ruk gayi hai —  
-phir yaad aata tha,  
-uski hasi ke aas paas hi toh sab kuch chalta tha.  
-Jaise har raat uski awaaz se subah hoti ho.`,
-    afterthought: "— Maybe calm was never boring, it was her.",
+    title: "Narmi Mein Taqat",
+    content: `Kuch log shor mein bhi thehraav laate hain,  
+woh unmein se ek thi.  
+Na kuch zyada, na kuch kam,  
+bas jitni zarurat thi duniya ko sambhalne ki.  
+  
+Uske har lafz mein ek narmi thi,  
+jo gusse ko bhi soch mein badal deti.  
+Jaise har mushkil ke andar  
+ek halki si roshni chhupa di ho usne.  
+  
+Woh sikhati thi bina shabd ke,  
+ki taqat awaaz se nahi,  
+santulan se dikhai jaati hai  
+aur izzat, sirf bartav se milti hai.  
+  
+Uske andaaz mein ek sukoon tha,  
+na dikhawa, na dabav.  
+Bas ek halka sa noor,  
+jo sab kuch aasaan bana deta tha.  
+  
+Kabhi kabhi sochta hoon,  
+kaise itni shaanti ek insaan mein sama sakti hai.  
+Jaise zindagi ne use  
+thoda zyada samjha diya ho baaki sabse.  
+  
+Aur pata nahi kaise,  
+par uski wo shaant si seekh  
+meri zindagi ka hissa ban gayi.  
+Ab har afra-tafri mein,  
+main usi jaisa thehraav dhoondhta hoon.`,
+    afterthought: "“Zindagi ke daud mein, usne thehraav likh diya.”",
     next: "poem3",
     prev: "poem1",
-    music: "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%202.mp3",
+    music:
+      "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%202.mp3",
   },
+
+  // Poem 3
   {
     id: "poem3",
-    title: "Uske Baad",
-    content: `Dooriyan toh thi, par baatein wahi rahi.  
-Samay beeta, par ehsaas wahi rahe.  
-Aur main?  
-Main bas behta raha,  
-uske hone ke yaadon mein.`,
-    afterthought: "— Some distances don’t fade, they just hum softly.",
+    title: "Sahaj aur Sacchi",
+    content: `Kuch log shor nahi karte,  
+bas saath ka ehsaas ban jaate hain.  
+Woh aisi hi thi —  
+bina kahe sab keh jaane wali.  
+  
+Har mushkil mein, bina bulaye khadi milti thi,  
+jaise zimmedaari nahi, aadat ho sambhalne ki.  
+Uske hone se afra-tafri bhi  
+thodi kam lagti thi.  
+  
+Uska saath koi wada nahi tha,  
+par har dafa nibhaaya gaya.  
+Bina shart, bina shor,  
+sirf ek sachcha sa junoon tha.  
+  
+Kabhi hans kar, kabhi daant kar,  
+woh bas sambhal leti thi sab kuch.  
+Jaise dosti uske liye  
+ek farz nahi, ek ehsaas thi.  
+  
+Kya kehte hain aise logon ko?  
+Jo dost se badhkar, dua lagte hain —  
+jo apne hone se hi  
+tumhe behtar bana dete hain.  
+  
+Aur agar zindagi fir pooche,  
+“Kaun sa saath dobara chuno?”  
+toh jawab wahi rahega —  
+woh jo saath rahi.`,
+    afterthought: "“Kabhi kabhi ek dost saare sawalo ka jawab bann jata hai.”",
     next: "poem4",
     prev: "poem2",
-    music: "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%203.mp3",
+    music:
+      "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%203.mp3",
   },
+
+  // Poem 4
   {
     id: "poem4",
-    title: "The Greener Me",
-    content: `She helped me grow —  
-so much, probably,  
-that the next person will now say,  
-‘ye ekdum green flag hai’.  
-And maybe that’s her legacy in me.`,
-    afterthought: "— Growth doesn’t always stay; sometimes it leaves its roots behind.",
+    title: "Sukoon Bhari Yaad",
+    content: `Usse milna, jaise pehli dafa dil ka darwaza khula ho,  
+zameen se judi, par sapno jaisi.  
+Jo raat ke teen baje bhi uth ke keh deti thi, “Safe flight, I love you,”  
+aur jab phone chori ho gaya tha, toh bina kahe naya laa di thi.  
+  
+Woh sirf pyaar nahi karti thi, woh pyaar ko jeeti thi —  
+Teej waale din tithi ke hisaab se wish karne par bhavuk ho jaane wali,  
+aur Shivling ko dil se apnane wali,  
+jaise har dua uske haath se nikal kar, seedha mujhe milti ho.  
+  
+Woh apni duniya khud sambhalne wali thi,  
+apni ladai khud ladti thi.  
+Phir bhi, pata nahi kaise,  
+mujhe apni kahani ka chhota sa hissa bana liya,  
+aur bas wahi, mere liye sab kuch tha.  
+  
+Main kabhi uska savior banna nahi chahta tha,  
+sirf itna chahta tha, ki jab duniya uljhe,  
+main uske paas khada rahoon,  
+tab tak, jab tak woh khud raasta dhoondh le.  
+  
+Uske saath, main badla —  
+thoda aur dhairya seekha, thoda aur pyaar.  
+Usne mujhe yun samjha,  
+ki aaj main shayad kisi ke liye ekdum green flag ban gaya hoon.  
+  
+Aur chahe waqt ne hum dono ko thoda rukne pe majboor kiya ho,  
+mera yakeen wahi hai —  
+yeh kahani adhoori nahi,  
+bas rukkar saans le rahi hai.`,
+    afterthought:
+      "“Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue.”",
     next: "outro",
     prev: "poem3",
-    music: "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%204.mp3",
+    music:
+      "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%204.mp3",
   },
+
+  // Outro
   {
     id: "outro",
     title: "Abhi Na Jao Chhod Ke",
-    content: "Kuch adhura sa hai, kuch poora bhi. Par kahani yahin tak thi — ya shayad yahin se shuru.",
+    content:
+      "Kuch kahaniyaan poori nahi hoti, par unke asar kabhi khatam nahi hote. Yeh bhi shayad unmein se ek thi.",
     afterthought: "— Thank you for being every phase of knowing you.",
     prev: "poem4",
-    music: null, // no music in outro
+    music: null, // no music here
   },
 ];
 
@@ -115,13 +230,17 @@ export default function App() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.8 }}
-          className="max-w-xl"
+          className="max-w-2xl"
         >
           <h1 className="text-3xl font-semibold mb-4">{current.title}</h1>
-          <p className="whitespace-pre-line text-lg leading-relaxed">{current.content}</p>
+          <p className="whitespace-pre-line text-lg leading-relaxed">
+            {current.content}
+          </p>
 
           {current.afterthought && (
-            <p className="mt-6 text-sm text-gray-400 italic">{current.afterthought}</p>
+            <p className="mt-6 text-sm text-gray-400 italic">
+              {current.afterthought}
+            </p>
           )}
 
           {/* MENU GRID */}
