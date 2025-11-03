@@ -2,202 +2,304 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>for Payal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>the four phases of knowing you</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;overflow:hidden;font-family:"Cormorant Garamond",serif;}
-  body{
-    background-color:#f5e8e6;
-    color:#4b2e2e;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:background 1s ease;
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: #f9eceb;
+    color: #4b2e2e;
+    height: 100vh;
+    overflow: hidden;
+    transition: background 1s ease;
   }
 
-  section{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    padding:40px;
-    opacity:0;
-    transform:scale(1.02);
-    pointer-events:none;
-    transition:opacity 1s ease,transform 1s ease;
+  section {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.02);
+    transition: opacity 1s ease, transform 1s ease;
   }
-  section.active{
-    opacity:1;
-    transform:scale(1);
-    pointer-events:auto;
+  section.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
   }
 
-  .card{
-    max-width:920px;
-    padding:40px;
-    border-radius:12px;
-    background:rgba(255,255,255,0.75);
-    box-shadow:0 20px 60px rgba(0,0,0,0.06);
-    text-align:center;
+  .card {
+    max-width: 800px;
+    background: rgba(255,255,255,0.75);
+    padding: 2rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
   }
-  h1{font-size:2.1rem;margin-bottom:18px;opacity:0;transform:translateY(18px);animation:floatUp .9s .2s forwards;}
-  .line{font-size:1.05rem;line-height:1.65;color:#4b2e2e;opacity:0;transform:translateY(22px);}
-  .line.l1{animation:floatUp 1s .8s forwards;}
-  .line.l2{animation:floatUp 1s 2s forwards;}
-  .line.l3{animation:floatUp 1s 3.6s forwards;}
-  .line.l4{animation:floatUp 1s 5s forwards;}
-  .line.l5{animation:floatUp 1s 6.6s forwards;font-weight:600;}
-  @keyframes floatUp{to{opacity:1;transform:translateY(0);}}
 
-  .begin{
-    display:inline-block;
-    margin-top:28px;
-    padding:10px 28px;
-    border-radius:999px;
-    border:2px solid #4b2e2e;
-    background:transparent;
-    color:#4b2e2e;
-    font-weight:600;
-    cursor:pointer;
-    opacity:0;
-    transform:translateY(20px);
-    animation:floatUp 1s 8s forwards;
+  h1 { font-size: 2rem; margin-bottom: 1.2rem; color: #5b2b43; }
+  .line { font-size: 1.1rem; line-height: 1.7; margin-bottom: 0.8rem; }
+
+  button {
+    background: #5b2b43;
+    color: #fff;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: background 0.3s ease;
   }
-  .begin:hover{background:#4b2e2e;color:#f5e8e6;}
-  .signature{margin-top:20px;font-style:italic;color:rgba(75,46,46,0.85);opacity:0;animation:fadeIn 1s 8.8s forwards;}
-  @keyframes fadeIn{to{opacity:0.9}}
+  button:hover { background: #3b1d2c; }
 
-  /* ---------- MUSIC BUTTON ---------- */
+  .signature { font-style: italic; margin-top: 1.5rem; opacity: 0.8; }
+
+  /* MENU */
+  .menu h1 { margin-bottom: 1rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 1rem;
+    width: 90%;
+    max-width: 800px;
+  }
+  .menu-card {
+    background: #e4c7cc;
+    padding: 2rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .menu-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  .poem { white-space: pre-line; line-height: 1.8; max-width: 700px; font-size: 1.05rem; margin-bottom: 2rem; }
+  .transition { font-style: italic; margin-bottom: 2rem; opacity: 0.8; }
+
   .music-btn {
     position: fixed;
     top: 15px;
     right: 20px;
-    background: rgba(255,255,255,0.8);
-    border: 1px solid #4b2e2e;
-    border-radius: 30px;
-    padding: 6px 16px;
-    cursor: pointer;
-    font-size: 0.9rem;
+    background: rgba(255,255,255,0.85);
     color: #4b2e2e;
+    border: 1px solid #4b2e2e;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
     z-index: 10;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
   }
   .music-btn:hover { background: #4b2e2e; color: #fff; }
 
-  /* ---------- MENU + POEMS ---------- */
-  .menu h1{font-size:2rem;color:#6b3e55;margin-bottom:1.5rem;letter-spacing:1px;}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;width:80%;max-width:900px;}
-  .menu-card{position:relative;height:220px;border-radius:16px;overflow:hidden;cursor:pointer;background:#f3c6d3;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;letter-spacing:1px;text-shadow:0 2px 4px rgba(0,0,0,0.3);transition:transform 0.6s ease,box-shadow 0.6s ease;z-index:2;}
-  .menu-card:hover{transform:scale(1.03);box-shadow:0 10px 20px rgba(0,0,0,0.2);}
-  .menu-card::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.25);pointer-events:none;}
-  .menu-card span{position:relative;z-index:2;}
-  .poem-page h1{font-size:2rem;letter-spacing:1px;margin-bottom:2rem;color:#8a3b5e;text-align:center;width:100%;}
-  .poem{max-width:650px;line-height:1.8;font-size:1.1rem;white-space:pre-line;margin-bottom:2rem;}
-  .poem-page {overflow:hidden;}
-  .poem {max-height:65vh;overflow-y:auto;padding-right:0.5rem;scrollbar-width:thin;scrollbar-color:transparent transparent;transition:scrollbar-color 0.3s ease;}
-  .poem:hover {scrollbar-color:rgba(75,46,46,0.3) transparent;}
-  .poem::-webkit-scrollbar {width:6px;}
-  .poem::-webkit-scrollbar-thumb {background-color:transparent;border-radius:3px;transition:background-color 0.3s ease;}
-  .poem:hover::-webkit-scrollbar-thumb {background-color:rgba(75,46,46,0.3);}
-  .transition{font-style:italic;margin-bottom:2rem;color:#6b2f4b;font-size:1rem;opacity:0.8;}
-  .buttons{display:flex;justify-content:center;gap:1rem;}
-  button{border:none;background-color:#8a3b5e;color:white;padding:0.7rem 1.5rem;border-radius:30px;font-size:0.95rem;cursor:pointer;transition:background-color 0.3s ease,transform 0.3s ease;}
-  button:hover{background-color:#5b253d;transform:scale(1.05);}
-  .final h1{font-size:1.6rem;max-width:700px;line-height:1.8;margin-bottom:2rem;text-align:center;}
-  .final .signature{font-style:italic;font-size:1.1rem;color:#7a3b56;margin-bottom:3rem;}
-  @media(max-width:640px){h1{font-size:1.6rem}.menu-card{height:180px;font-size:1.1rem}.poem{font-size:1rem}}
 </style>
 </head>
 <body>
 
-<!-- 🔊 BACKGROUND AUDIO -->
-<audio id="bgAudio" loop>
+<!-- 🎵 Audio Elements -->
+<audio id="introAudio" loop>
   <source src="https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/intro%2Bmenu.mp3" type="audio/mpeg">
 </audio>
+<audio id="poem1">
+  <source src="https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%201.mp3" type="audio/mpeg">
+</audio>
+<audio id="poem2">
+  <source src="https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%202.mp3" type="audio/mpeg">
+</audio>
+<audio id="poem3">
+  <source src="https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%203.mp3" type="audio/mpeg">
+</audio>
+<audio id="poem4">
+  <source src="https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/poem%204.mp3" type="audio/mpeg">
+</audio>
+
 <button id="musicBtn" class="music-btn">Play Music</button>
 
-<!-- INTRO -->
+<!-- 🌸 INTRO -->
 <section id="intro" class="active">
   <div class="card">
-    <h1>This space holds four poems.</h1>
-    <div class="line l1">Each one belongs to a phase — a beginning, a becoming, a bond, and something that still lingers.</div>
-    <div class="line l2">Nothing to decode here.</div>
-    <div class="line l3">Just moments that meant something, arranged gently in their own time.</div>
-    <div class="line l4">Start wherever you wish.</div>
-    <div class="line l5">You’ll find a bit of us in each.</div>
-    <button class="begin" onclick="startMusicAndGo()">Begin →</button>
+    <h1>The four phases of knowing you</h1>
+    <div class="line">Each one a moment, a memory, a feeling.</div>
+    <div class="line">They don’t demand to be understood, only felt.</div>
+    <div class="line">Start wherever you wish — you’ll find a piece of us in each.</div>
+    <button onclick="goTo('menu')">Begin →</button>
     <div class="signature">for Payal.</div>
   </div>
 </section>
 
-<!-- MENU -->
+<!-- 💌 MENU -->
 <section id="menu" class="menu">
   <h1>Choose a Chapter</h1>
   <div class="grid">
-    <div class="menu-card" onclick="goTo('spark')"><span>1. Naram per Atoot</span></div>
-    <div class="menu-card" onclick="goTo('calm')"><span>2. Narmi mei Taqat</span></div>
-    <div class="menu-card" onclick="goTo('friend')"><span>3. Sahaj aur Sachi</span></div>
-    <div class="menu-card" onclick="goTo('love')"><span>4. Sukoon Bhari Yaad</span></div>
+    <div class="menu-card" onclick="goTo('spark')">1. Naram per Atoot</div>
+    <div class="menu-card" onclick="goTo('calm')">2. Narmi mei Taqat</div>
+    <div class="menu-card" onclick="goTo('friend')">3. Sahaj aur Sachi</div>
+    <div class="menu-card" onclick="goTo('love')">4. Sukoon Bhari Yaad</div>
   </div>
 </section>
 
-<!-- POEM SECTIONS -->
+<!-- 🔥 SPARK -->
 <section id="spark" class="poem-page">
   <h1>Naram per Atoot</h1>
-  <div class="poem">Woh kehti hai, … (same text as before)</div>
-  <div class="transition">“Aur shayad isi liye, uske hone se duniya thodi behtar lagti hai.”</div>
-  <div class="buttons">
-    <button onclick="goTo('menu')">Back to All Poems</button>
-    <button onclick="goTo('calm')">Next Phase →</button>
+  <div class="poem">She used to say I’m weird, and I’d laugh because I thought she wasn’t.
+Turns out she is — wonderfully weird.
+The kind of weird that makes silence feel alive,
+that turns a random train ride into a lifetime story,
+that finds meaning in the smallest of things — a vada anna wala, a pasta box, a scribbled note.
+
+She’s weird in the way calm feels like chaos if she’s not around.
+Weird in the way she made me believe that ordinary people can still make love look divine.</div>
+  <div class="transition">"And in her weirdness, I found my peace."</div>
+  <div>
+    <button onclick="goTo('menu')">← Back</button>
+    <button onclick="goTo('calm')">Next →</button>
   </div>
 </section>
 
-<!-- Add your other poem sections (calm, friend, love, final) exactly as before -->
-<!-- ... your same text ... -->
+<!-- 🌙 CALM -->
+<section id="calm" class="poem-page">
+  <h1>Narmi mei Taqat</h1>
+  <div class="poem">In her silence, there’s softness — not weakness.
+In her eyes, there’s courage — not noise.
+She doesn’t shout her worth, she breathes it.
+Maybe that’s what makes her rare —
+she feels deeply but never lets the world see her break.
+And somehow, even her calmness feels louder than my chaos.</div>
+  <div class="transition">"She was peace disguised as a person."</div>
+  <div>
+    <button onclick="goTo('spark')">← Back</button>
+    <button onclick="goTo('friend')">Next →</button>
+  </div>
+</section>
+
+<!-- 🤝 FRIEND -->
+<section id="friend" class="poem-page">
+  <h1>Sahaj aur Sachi</h1>
+  <div class="poem">We were never bound by definitions.
+Not lovers, not strangers — something softer in between.
+The kind where comfort didn’t need validation,
+and laughter always arrived uninvited.
+She was my pause between everything that was too much.
+Maybe that’s what truth feels like — not loud, just known.</div>
+  <div class="transition">"We didn’t need forever, we needed now."</div>
+  <div>
+    <button onclick="goTo('calm')">← Back</button>
+    <button onclick="goTo('love')">Next →</button>
+  </div>
+</section>
+
+<!-- ❤️ LOVE -->
+<section id="love" class="poem-page">
+  <h1>Sukoon Bhari Yaad</h1>
+  <div class="poem">
+   Usse milna, jaise pehli dafa dil ka darwaza khula ho
+   zameen se judi, par sapno jaisi.
+   Jo raat ke teen baje bhi uth ke keh deti thi, “Safe flight, I love you,” 
+   aur jab phone chori ho gaya tha, toh bina kahe naya laa di thi.
+
+   
+  </div>
+  <div class="transition">"Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue."</div>
+  <div>
+    <button onclick="goTo('friend')">← Back</button>
+    <button onclick="goTo('final')">Next →</button>
+  </div>
+</section>
+
+<!-- 🌅 FINAL -->
+<section id="final" class="final">
+  <h1>
+   If you ever lose your calm,<br>remember — you are someone’s peace.
+   <br>Maybe knowing you wasn’t a chapter — it was the story itself.</h1>
+  <div class="signature">– Abhinav</div>
+  <button onclick="goTo('menu')">Back to Menu</button>
+</section>
 
 <script>
-  const sections = document.querySelectorAll("section");
-  const bgAudio = document.getElementById("bgAudio");
-  const musicBtn = document.getElementById("musicBtn");
-  let isPlaying = false;
+const sections = document.querySelectorAll('section');
+const musicBtn = document.getElementById('musicBtn');
+const introAudio = document.getElementById('introAudio');
+const poemAudios = [
+  document.getElementById('poem1'),
+  document.getElementById('poem2'),
+  document.getElementById('poem3'),
+  document.getElementById('poem4')
+];
+let currentAudio = introAudio;
+let isPlaying = false;
 
-  musicBtn.addEventListener("click", () => {
-    if(isPlaying){
-      bgAudio.pause();
-      musicBtn.textContent = "Play Music";
-    } else {
-      bgAudio.play();
-      musicBtn.textContent = "Pause Music";
-    }
-    isPlaying = !isPlaying;
-  });
+musicBtn.addEventListener('click', toggleMusic);
 
-  function startMusicAndGo(){
-    bgAudio.play();
+function stopAllAudio() {
+  introAudio.pause();
+  poemAudios.forEach(a => { a.pause(); a.currentTime = 0; });
+}
+
+function toggleMusic() {
+  if (isPlaying) {
+    currentAudio.pause();
+    musicBtn.textContent = "Play Music";
+  } else {
+    currentAudio.play();
     musicBtn.textContent = "Pause Music";
-    isPlaying = true;
-    goTo('menu');
+  }
+  isPlaying = !isPlaying;
+}
+
+function goTo(id) {
+  sections.forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  // Stop previous audio
+  stopAllAudio();
+
+  // Change background colors for mood
+  if (id === "intro" || id === "menu") {
+    document.body.style.background = "#f9eceb";
+    currentAudio = introAudio;
+  } else if (id === "spark") {
+    document.body.style.background = "linear-gradient(180deg,#fde8ef,#f7c4d4)";
+    currentAudio = poemAudios[0];
+  } else if (id === "calm") {
+    document.body.style.background = "linear-gradient(180deg,#fce1eb,#f6bfcf)";
+    currentAudio = poemAudios[1];
+  } else if (id === "friend") {
+    document.body.style.background = "linear-gradient(180deg,#fde8ef,#f7c4d4)";
+    currentAudio = poemAudios[2];
+  } else if (id === "love") {
+    document.body.style.background = "linear-gradient(180deg,#fce1eb,#f6bfcf)";
+    currentAudio = poemAudios[3];
+  } else {
+    document.body.style.background = "#f9eceb";
   }
 
-  function goTo(id){
-    sections.forEach(sec=>sec.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-    if(id==="intro") document.body.style.background="#f5e8e6";
-    else if(id==="menu") document.body.style.background="#fbe8ec";
-    else if(id==="spark") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
-    else if(id==="calm") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
-    else if(id==="friend") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
-    else if(id==="love") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
-    else if(id==="final") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
+  // Autoplay new audio
+  if (id !== "final") {
+    currentAudio.play().then(() => {
+      isPlaying = true;
+      musicBtn.textContent = "Pause Music";
+    }).catch(() => {
+      isPlaying = false;
+      musicBtn.textContent = "Play Music";
+    });
+  } else {
+    isPlaying = false;
+    musicBtn.textContent = "Play Music";
   }
+}
 </script>
-
 </body>
 </html>
-
