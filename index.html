@@ -4,216 +4,206 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Four Phases of Knowing You</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+
+    body {
+      background-color: #0b0b0b;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background 1s ease;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 700px;
+      padding: 30px;
+      line-height: 1.7;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+
+    .active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #f8c471;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #eee;
+    }
+
+    .afterthought {
+      font-style: italic;
+      color: #b3b3b3;
+      margin-top: 10px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      background: none;
+      border: 1px solid #f8c471;
+      color: #f8c471;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #f8c471;
+      color: #0b0b0b;
+    }
+
+    #music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #f8c471;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">
-    <div id="page"></div>
-    <button id="music-btn" onclick="toggleMusic()">🎵</button>
+  <audio id="bg-music" loop>
+    <source src="audio/intro+menu.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="music-btn">🎵</button>
+
+  <div class="container active" id="page1">
+    <h1>Naram per Atoot</h1>
+    <p>Woh kehti hai, “Main thodi wierd hoon.”<br>
+    Shayad isiliye samajh nahi aati, bas mehsoos hoti hoon.<br><br>
+    Woh sabse alag hai — shaant, par mazboot.<br>
+    Uske andaaz mein masti hai, aur soch mein gehraai.<br><br>
+    Usme ek ajeeb sa sukoon hai, jaise zindagi ne use thoda zyada samjha ho.<br>
+    Na shor, na dikhawa, sirf ek noor, jo sab keh jaata hai.<br><br>
+    Taqat agar insaan hoti, to woh Payal jaise hoti — narm, par atoot;<br>
+    bal bhi, aur shanti bhi.<br><br>
+    Usne sikhaya, ki taqat ko ghamand se nahi, sahajta se jeena chahiye.<br><br>
+    Woh hi to hai ek roshni jo jalaati nahi, par aaspaas sab kuch roshan kar deti hai.</p>
+    <p class="afterthought">“Aur shayad isi liye, uske hone se duniya thodi behtar lagti hai.”</p>
+    <div class="buttons"><button id="next1">Next →</button></div>
   </div>
 
-  <script src="script.js"></script>
+  <div class="container" id="page2">
+    <h1>Narmi Mein Taqat</h1>
+    <p>Kuch log shor mein bhi thehraav laate hain, woh unmein se ek thi.<br>
+    Na kuch zyada, na kuch kam, bas jitni zarurat thi duniya ko sambhalne ki.<br><br>
+    Uske har lafz mein ek narmi thi, jo gusse ko bhi soch mein badal deti.<br>
+    Jaise har mushkil ke andar ek halki si roshni chhupa di ho usne.<br><br>
+    Woh sikhati thi bina shabd ke, ki taqat awaaz se nahi, santulan se dikhai jaati hai aur izzat, sirf bartav se milti hai.<br><br>
+    Uske andaaz mein ek sukoon tha, na dikhawa, na dabav.<br>
+    Bas ek halka sa noor, jo sab kuch aasaan bana deta tha.<br><br>
+    Kabhi kabhi sochta hoon, kaise itni shaanti ek insaan mein sama sakti hai.<br>
+    Jaise zindagi ne use thoda zyada samjha diya ho baaki sabse.<br><br>
+    Aur pata nahi kaise, par uski wo shaant si seekh meri zindagi ka hissa ban gayi.<br>
+    Ab har afra-tafri mein, main usi jaisa thehraav dhoondhta hoon.</p>
+    <p class="afterthought">“Zindagi ke daud mein, usne thehraav likh diya.”</p>
+    <div class="buttons">
+      <button id="back2">← Back</button>
+      <button id="next2">Next →</button>
+    </div>
+  </div>
+
+  <div class="container" id="page3">
+    <h1>Sahaj aur Sacchi</h1>
+    <p>Kuch log shor nahi karte, bas saath ka ehsaas ban jaate hain.<br>
+    Woh aisi hi thi — bina kahe sab keh jaane wali.<br><br>
+    Har mushkil mein, bina bulaye khadi milti thi, jaise zimmedaari nahi, aadat ho sambhalne ki.<br>
+    Uske hone se afra-tafri bhi thodi kam lagti thi.<br><br>
+    Uska saath koi wada nahi tha, par har dafa nibhaaya gaya.<br>
+    Bina shart, bina shor, sirf ek sachcha sa junoon tha.<br><br>
+    Kabhi hans kar, kabhi daant kar, woh bas sambhal leti thi sab kuch.<br>
+    Jaise dosti uske liye ek farz nahi, ek ehsaas thi.<br><br>
+    Kya kehte hain aise logon ko? Jo dost se badhkar, dua lagte hain — jo apne hone se hi tumhe behtar bana dete hain.<br><br>
+    Aur agar zindagi fir pooche, “Kaun sa saath dobara chuno?” toh jawab wahi rahega — woh jo saath rahi.</p>
+    <p class="afterthought">“Kabhi kabhi ek dost saare sawalo ka jawab bann jata hai.”</p>
+    <div class="buttons">
+      <button id="back3">← Back</button>
+      <button id="next3">Next →</button>
+    </div>
+  </div>
+
+  <div class="container" id="page4">
+    <h1>Sukoon Bhari Yaad</h1>
+    <p>Usse milna, jaise pehli dafa dil ka darwaza khula ho, zameen se judi, par sapno jaisi.<br>
+    Jo raat ke teen baje bhi uth ke keh deti thi, “Safe flight, I love you,”<br>
+    aur jab phone chori ho gaya tha, toh bina kahe naya laa di thi.<br><br>
+    Woh sirf pyaar nahi karti thi, woh pyaar ko jeeti thi — Teej waale din tithi ke hisaab se wish karne par bhavuk ho jaane wali,<br>
+    aur Shivling ko dil se apnane wali, jaise har dua uske haath se nikal kar, seedha mujhe milti ho.<br><br>
+    Woh apni duniya khud sambhalne wali thi, apni ladai khud ladti thi.<br>
+    Phir bhi, pata nahi kaise, mujhe apni kahani ka chhota sa hissa bana liya,<br>
+    aur bas wahi, mere liye sab kuch tha.<br><br>
+    Main kabhi uska savior banna nahi chahta tha, sirf itna chahta tha, ki jab duniya uljhe,<br>
+    main uske paas khada rahoon, tab tak, jab tak woh khud raasta dhoondh le.<br><br>
+    Uske saath, main badla — thoda aur dhairya seekha, thoda aur pyaar.<br>
+    Usne mujhe yun samjha, ki aaj main shayad kisi ke liye ekdum green flag ban gaya hoon.<br><br>
+    Aur chahe waqt ne hum dono ko thoda rukne pe majboor kiya ho, mera yakeen wahi hai —<br>
+    yeh kahani adhoori nahi, bas rukkar saans le rahi hai.</p>
+    <p class="afterthought">“Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue.”</p>
+    <div class="buttons">
+      <button id="back4">← Back</button>
+    </div>
+  </div>
+
+  <script>
+    const pages = document.querySelectorAll(".container");
+    let currentPage = 0;
+
+    function showPage(index) {
+      pages.forEach((page, i) => {
+        page.classList.remove("active");
+        if (i === index) page.classList.add("active");
+      });
+    }
+
+    document.getElementById("next1").onclick = () => { currentPage = 1; showPage(currentPage); };
+    document.getElementById("next2").onclick = () => { currentPage = 2; showPage(currentPage); };
+    document.getElementById("next3").onclick = () => { currentPage = 3; showPage(currentPage); };
+
+    document.getElementById("back2").onclick = () => { currentPage = 0; showPage(currentPage); };
+    document.getElementById("back3").onclick = () => { currentPage = 1; showPage(currentPage); };
+    document.getElementById("back4").onclick = () => { currentPage = 2; showPage(currentPage); };
+
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
+
+    musicBtn.onclick = () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "🔇";
+      } else {
+        music.pause();
+        musicBtn.textContent = "🎵";
+      }
+    };
+  </script>
 </body>
 </html>
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0b0b0b;
-  color: #f5f5f5;
-  font-family: 'Georgia', serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  transition: background 1s ease;
-}
-
-#app {
-  max-width: 600px;
-  padding: 20px;
-}
-
-h2 {
-  font-size: 1.6em;
-  margin-bottom: 20px;
-}
-
-p {
-  line-height: 1.7;
-  font-size: 1.1em;
-}
-
-button {
-  background: none;
-  color: #fff;
-  border: 1px solid #fff;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  margin-top: 25px;
-}
-
-button:hover {
-  background: #ffffff22;
-}
-
-#music-btn {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  font-size: 22px;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-const pages = [
-  {
-    title: "The Four Phases of Knowing You",
-    poem: `
-      Some stories begin softly — like a breath before dawn.<br><br>
-      <button onclick='nextPage()'>Begin</button>`,
-    audio: "audio/intro+menu.mp3"
-  },
-  {
-    title: "Naram par Atoot",
-    poem: `
-      Woh kehti hai, “Main thodi weird hoon.”<br>
-      Shayad isiliye samajh nahi aati, bas mehsoos hoti hoon.<br><br>
-      Woh sabse alag hai — shaant, par mazboot.<br>
-      Uske andaaz mein masti hai, aur soch mein gehraai.<br><br>
-      Usme ek ajeeb sa sukoon hai, jaise zindagi ne use thoda zyada samjha ho.<br>
-      Na shor, na dikhawa, sirf ek noor, jo sab keh jaata hai.<br><br>
-      Taqat agar insaan hoti, to woh Payal jaise hoti —<br>
-      narm, par atoot; bal bhi, aur shanti bhi.<br><br>
-      Usne sikhaya, ki taqat ko ghamand se nahi,<br>
-      sahajta se jeena chahiye.<br><br>
-      Woh hi to hai ek roshni jo jalaati nahi,<br>
-      par aaspaas sab kuch roshan kar deti hai.<br><br>
-      <i>“Aur shayad isi liye, uske hone se duniya thodi behtar lagti hai.”</i><br><br>
-      <button onclick='nextPage()'>Next Phase →</button>`,
-    audio: "audio/poem 1.mp3"
-  },
-  {
-    title: "Narmi Mein Taqat",
-    poem: `
-      Kuch log shor mein bhi thehraav laate hain,<br>
-      woh unmein se ek thi.<br>
-      Na kuch zyada, na kuch kam,<br>
-      bas jitni zarurat thi duniya ko sambhalne ki.<br><br>
-      Uske har lafz mein ek narmi thi,<br>
-      jo gusse ko bhi soch mein badal deti.<br>
-      Jaise har mushkil ke andar ek halki si roshni chhupa di ho usne.<br><br>
-      Woh sikhati thi bina shabd ke,<br>
-      ki taqat awaaz se nahi,<br>
-      santulan se dikhai jaati hai,<br>
-      aur izzat sirf bartav se milti hai.<br><br>
-      Uske andaaz mein ek sukoon tha —<br>
-      na dikhawa, na dabav.<br>
-      Bas ek halka sa noor, jo sab kuch aasaan bana deta tha.<br><br>
-      Kabhi kabhi sochta hoon,<br>
-      kaise itni shaanti ek insaan mein sama sakti hai.<br>
-      Jaise zindagi ne use thoda zyada samjha diya ho baaki sabse.<br><br>
-      Aur pata nahi kaise,<br>
-      par uski wo shaant si seekh meri zindagi ka hissa ban gayi.<br>
-      Ab har afra-tafri mein, main usi jaisa thehraav dhoondhta hoon.<br><br>
-      <i>“Zindagi ke daud mein, usne thehraav likh diya.”</i><br><br>
-      <button onclick='nextPage()'>Next Phase →</button>`,
-    audio: "audio/poem 2.mp3"
-  },
-  {
-    title: "Sahaj aur Sacchi",
-    poem: `
-      Kuch log shor nahi karte,<br>
-      bas saath ka ehsaas ban jaate hain.<br>
-      Woh aisi hi thi — bina kahe sab keh jaane wali.<br><br>
-      Har mushkil mein, bina bulaye khadi milti thi,<br>
-      jaise zimmedaari nahi, aadat ho sambhalne ki.<br><br>
-      Uska saath koi wada nahi tha,<br>
-      par har dafa nibhaaya gaya.<br>
-      Bina shart, bina shor, sirf ek sachcha sa junoon tha.<br><br>
-      Kabhi hans kar, kabhi daant kar,<br>
-      woh bas sambhal leti thi sab kuch.<br>
-      Jaise dosti uske liye ek farz nahi, ek ehsaas thi.<br><br>
-      Kya kehte hain aise logon ko?<br>
-      Jo dost se badhkar, dua lagte hain —<br>
-      jo apne hone se hi tumhe behtar bana dete hain.<br><br>
-      <i>“Kabhi kabhi ek dost saare sawalo ka jawab bann jata hai.”</i><br><br>
-      <button onclick='nextPage()'>Next Phase →</button>`,
-    audio: "audio/poem 3.mp3"
-  },
-  {
-    title: "Sukoon Bhari Yaad",
-    poem: `
-      Usse milna, jaise pehli dafa dil ka darwaza khula ho,<br>
-      zameen se judi, par sapno jaisi.<br>
-      Jo raat ke teen baje bhi uth ke keh deti thi, “Safe flight, I love you,”<br>
-      aur jab phone chori ho gaya tha, toh bina kahe naya laa di thi.<br><br>
-      Woh sirf pyaar nahi karti thi, woh pyaar ko jeeti thi —<br>
-      Teej waale din tithi ke hisaab se wish karne par bhavuk ho jaane wali,<br>
-      aur Shivling ko dil se apnane wali,<br>
-      jaise har dua uske haath se nikal kar, seedha mujhe milti ho.<br><br>
-      Woh apni duniya khud sambhalne wali thi,<br>
-      apni ladai khud ladti thi.<br>
-      Phir bhi, pata nahi kaise,<br>
-      mujhe apni kahani ka chhota sa hissa bana liya,<br>
-      aur bas wahi, mere liye sab kuch tha.<br><br>
-      Main kabhi uska savior banna nahi chahta tha,<br>
-      sirf itna chahta tha, ki jab duniya uljhe,<br>
-      main uske paas khada rahoon,<br>
-      tab tak, jab tak woh khud raasta dhoondh le.<br><br>
-      Uske saath, main badla —<br>
-      thoda aur dhairya seekha, thoda aur pyaar.<br>
-      Usne mujhe yun samjha,<br>
-      ki aaj main shayad kisi ke liye ekdum green flag ban gaya hoon.<br><br>
-      Aur chahe waqt ne hum dono ko thoda rukne pe majboor kiya ho,<br>
-      mera yakeen wahi hai —<br>
-      yeh kahani adhoori nahi,<br>
-      bas rukkar saans le rahi hai.<br><br>
-      <i>“Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue.”</i><br><br>
-      <button onclick='nextPage()'>Final Phase →</button>`,
-    audio: "audio/poem 4.mp3"
-  },
-  {
-    title: "For the One Who Still Feels Like Home",
-    poem: `
-      Kuch raaste rukte nahi,<br>
-      sirf intezaar karte hain.<br>
-      Aur main bhi wahi hoon — wahi intezaar, wahi yakeen.<br><br>
-      <i>Abhi na jao chhod kar...</i><br><br>
-      <button onclick='restart()'>↺ Relive the Journey</button>`,
-    audio: "audio/outro.mp3"
-  }
-];
-
-let current = 0;
-let audio = new Audio();
-
-function loadPage() {
-  const p = pages[current];
-  document.getElementById("page").innerHTML = `
-    <h2>${p.title}</h2>
-    <p>${p.poem}</p>`;
-  
-  audio.src = p.audio;
-  audio.play().catch(() => console.log("Autoplay blocked"));
-}
-
-function nextPage() {
-  current = (current + 1) % pages.length;
-  loadPage();
-}
-
-function restart() {
-  current = 0;
-  loadPage();
-}
-
-function toggleMusic() {
-  if (audio.paused) audio.play();
-  else audio.pause();
-}
-
-loadPage();
