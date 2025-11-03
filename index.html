@@ -38,7 +38,7 @@
     pointer-events:auto;
   }
 
-  /* ---------- INTRO (animated reveal) ---------- */
+  /* ---------- INTRO ---------- */
   .card{
     max-width:920px;
     padding:40px;
@@ -74,7 +74,7 @@
   .signature{margin-top:20px;font-style:italic;color:rgba(75,46,46,0.85);opacity:0;animation:fadeIn 1s 8.8s forwards;}
   @keyframes fadeIn{to{opacity:0.9}}
 
-  /* ---------- POEM MENU ---------- */
+  /* ---------- MENU ---------- */
   .menu h1{font-size:2rem;color:#6b3e55;margin-bottom:1.5rem;letter-spacing:1px;}
   .grid{
     display:grid;
@@ -106,13 +106,35 @@
     position:absolute;
     inset:0;
     background:rgba(0,0,0,0.25);
-    pointer-events:none; /* ✅ lets clicks pass through */
+    pointer-events:none;
   }
   .menu-card span{position:relative;z-index:2;}
 
   /* ---------- POEMS ---------- */
   .poem-page h1{font-size:2rem;letter-spacing:1px;margin-bottom:2rem;color:#8a3b5e;text-align:center;width:100%;}
   .poem{max-width:650px;line-height:1.8;font-size:1.1rem;white-space:pre-line;margin-bottom:2rem;}
+
+  /* ✅ SCROLL ENABLED POEMS */
+  .poem-page {overflow:hidden;}
+  .poem {
+    max-height:65vh;
+    overflow-y:auto;
+    padding-right:0.5rem;
+    scrollbar-width:thin;
+    scrollbar-color:transparent transparent;
+    transition:scrollbar-color 0.3s ease;
+  }
+  .poem:hover {scrollbar-color:rgba(75,46,46,0.3) transparent;}
+  .poem::-webkit-scrollbar {width:6px;}
+  .poem::-webkit-scrollbar-thumb {
+    background-color:transparent;
+    border-radius:3px;
+    transition:background-color 0.3s ease;
+  }
+  .poem:hover::-webkit-scrollbar-thumb {
+    background-color:rgba(75,46,46,0.3);
+  }
+
   .transition{font-style:italic;margin-bottom:2rem;color:#6b2f4b;font-size:1rem;opacity:0.8;}
   .buttons{display:flex;justify-content:center;gap:1rem;}
   button{
