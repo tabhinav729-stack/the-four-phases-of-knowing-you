@@ -1,209 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Four Phases of Knowing You</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Georgia', serif;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>for Payal</title>
 
-    body {
-      background-color: #0b0b0b;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      transition: background 1s ease;
-      text-align: center;
-      overflow: hidden;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
-    .container {
-      max-width: 700px;
-      padding: 30px;
-      line-height: 1.7;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s ease;
-    }
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden;font-family:"Cormorant Garamond",serif;}
+  body{
+    background-color:#f5e8e6;
+    color:#4b2e2e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 1s ease;
+  }
 
-    .active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  section{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    opacity:0;
+    transform:scale(1.02);
+    pointer-events:none;
+    transition:opacity 1s ease,transform 1s ease;
+  }
+  section.active{
+    opacity:1;
+    transform:scale(1);
+    pointer-events:auto;
+  }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #f8c471;
-    }
+  /* ---------- INTRO ---------- */
+  .card{
+    max-width:920px;
+    padding:40px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.75);
+    box-shadow:0 20px 60px rgba(0,0,0,0.06);
+    text-align:center;
+  }
+  h1{font-size:2.1rem;margin-bottom:18px;opacity:0;transform:translateY(18px);animation:floatUp .9s .2s forwards;}
+  .line{font-size:1.05rem;line-height:1.65;color:#4b2e2e;opacity:0;transform:translateY(22px);}
+  .line.l1{animation:floatUp 1s .8s forwards;}
+  .line.l2{animation:floatUp 1s 2s forwards;}
+  .line.l3{animation:floatUp 1s 3.6s forwards;}
+  .line.l4{animation:floatUp 1s 5s forwards;}
+  .line.l5{animation:floatUp 1s 6.6s forwards;font-weight:600;}
+  @keyframes floatUp{to{opacity:1;transform:translateY(0);}}
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: #eee;
-    }
+  .begin{
+    display:inline-block;
+    margin-top:28px;
+    padding:10px 28px;
+    border-radius:999px;
+    border:2px solid #4b2e2e;
+    background:transparent;
+    color:#4b2e2e;
+    font-weight:600;
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(20px);
+    animation:floatUp 1s 8s forwards;
+  }
+  .begin:hover{background:#4b2e2e;color:#f5e8e6;}
+  .signature{margin-top:20px;font-style:italic;color:rgba(75,46,46,0.85);opacity:0;animation:fadeIn 1s 8.8s forwards;}
+  @keyframes fadeIn{to{opacity:0.9}}
 
-    .afterthought {
-      font-style: italic;
-      color: #b3b3b3;
-      margin-top: 10px;
-    }
+  /* ---------- MENU ---------- */
+  .menu h1{font-size:2rem;color:#6b3e55;margin-bottom:1.5rem;letter-spacing:1px;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.5rem;
+    width:80%;
+    max-width:900px;
+  }
+  .menu-card{
+    position:relative;
+    height:220px;
+    border-radius:16px;
+    overflow:hidden;
+    cursor:pointer;
+    background:#f3c6d3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:1.3rem;
+    letter-spacing:1px;
+    text-shadow:0 2px 4px rgba(0,0,0,0.3);
+    transition:transform 0.6s ease,box-shadow 0.6s ease;
+    z-index:2;
+  }
+  .menu-card:hover{transform:scale(1.03);box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+  .menu-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.25);
+    pointer-events:none;
+  }
+  .menu-card span{position:relative;z-index:2;}
 
-    .buttons {
-      margin-top: 30px;
-    }
+  /* ---------- POEMS ---------- */
+  .poem-page h1{font-size:2rem;letter-spacing:1px;margin-bottom:2rem;color:#8a3b5e;text-align:center;width:100%;}
+  .poem{max-width:650px;line-height:1.8;font-size:1.1rem;white-space:pre-line;margin-bottom:2rem;}
 
-    button {
-      background: none;
-      border: 1px solid #f8c471;
-      color: #f8c471;
-      padding: 10px 20px;
-      margin: 0 10px;
-      cursor: pointer;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-    }
+  /* ✅ SCROLL ENABLED POEMS */
+  .poem-page {overflow:hidden;}
+  .poem {
+    max-height:65vh;
+    overflow-y:auto;
+    padding-right:0.5rem;
+    scrollbar-width:thin;
+    scrollbar-color:transparent transparent;
+    transition:scrollbar-color 0.3s ease;
+  }
+  .poem:hover {scrollbar-color:rgba(75,46,46,0.3) transparent;}
+  .poem::-webkit-scrollbar {width:6px;}
+  .poem::-webkit-scrollbar-thumb {
+    background-color:transparent;
+    border-radius:3px;
+    transition:background-color 0.3s ease;
+  }
+  .poem:hover::-webkit-scrollbar-thumb {
+    background-color:rgba(75,46,46,0.3);
+  }
 
-    button:hover {
-      background-color: #f8c471;
-      color: #0b0b0b;
-    }
+  .transition{font-style:italic;margin-bottom:2rem;color:#6b2f4b;font-size:1rem;opacity:0.8;}
+  .buttons{display:flex;justify-content:center;gap:1rem;}
+  button{
+    border:none;
+    background-color:#8a3b5e;
+    color:white;
+    padding:0.7rem 1.5rem;
+    border-radius:30px;
+    font-size:0.95rem;
+    cursor:pointer;
+    transition:background-color 0.3s ease,transform 0.3s ease;
+  }
+  button:hover{background-color:#5b253d;transform:scale(1.05);}
 
-    #music-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: #f8c471;
-    }
-  </style>
+  /* ---------- FINAL ---------- */
+  .final h1{
+    font-size:1.6rem;
+    max-width:700px;
+    line-height:1.8;
+    margin-bottom:2rem;
+    text-align:center;
+  }
+  .final .signature{
+    font-style:italic;
+    font-size:1.1rem;
+    color:#7a3b56;
+    margin-bottom:3rem;
+  }
+
+  @media(max-width:640px){
+    h1{font-size:1.6rem}
+    .menu-card{height:180px;font-size:1.1rem}
+    .poem{font-size:1rem}
+  }
+</style>
 </head>
 <body>
-  <audio id="bg-music" loop>
-    <source src="audio/intro+menu.mp3" type="audio/mpeg">
-  </audio>
 
-  <button id="music-btn">🎵</button>
+<audio id="bgAudio" autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2023/04/03/audio_35a9d3f0a0.mp3?filename=dreamy-piano-ambient-144998.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="container active" id="page1">
-    <h1>Naram per Atoot</h1>
-    <p>Woh kehti hai, “Main thodi wierd hoon.”<br>
-    Shayad isiliye samajh nahi aati, bas mehsoos hoti hoon.<br><br>
-    Woh sabse alag hai — shaant, par mazboot.<br>
-    Uske andaaz mein masti hai, aur soch mein gehraai.<br><br>
-    Usme ek ajeeb sa sukoon hai, jaise zindagi ne use thoda zyada samjha ho.<br>
-    Na shor, na dikhawa, sirf ek noor, jo sab keh jaata hai.<br><br>
-    Taqat agar insaan hoti, to woh Payal jaise hoti — narm, par atoot;<br>
-    bal bhi, aur shanti bhi.<br><br>
-    Usne sikhaya, ki taqat ko ghamand se nahi, sahajta se jeena chahiye.<br><br>
-    Woh hi to hai ek roshni jo jalaati nahi, par aaspaas sab kuch roshan kar deti hai.</p>
-    <p class="afterthought">“Aur shayad isi liye, uske hone se duniya thodi behtar lagti hai.”</p>
-    <div class="buttons"><button id="next1">Next →</button></div>
+<!-- INTRO -->
+<section id="intro" class="active">
+  <div class="card">
+    <h1>This space holds four poems.</h1>
+    <div class="line l1">Each one belongs to a phase — a beginning, a becoming, a bond, and something that still lingers.</div>
+    <div class="line l2">Nothing to decode here.</div>
+    <div class="line l3">Just moments that meant something, arranged gently in their own time.</div>
+    <div class="line l4">Start wherever you wish.</div>
+    <div class="line l5">You’ll find a bit of us in each.</div>
+    <button class="begin" onclick="goTo('menu')">Begin →</button>
+    <div class="signature">for Payal.</div>
   </div>
+</section>
 
-  <div class="container" id="page2">
-    <h1>Narmi Mein Taqat</h1>
-    <p>Kuch log shor mein bhi thehraav laate hain, woh unmein se ek thi.<br>
-    Na kuch zyada, na kuch kam, bas jitni zarurat thi duniya ko sambhalne ki.<br><br>
-    Uske har lafz mein ek narmi thi, jo gusse ko bhi soch mein badal deti.<br>
-    Jaise har mushkil ke andar ek halki si roshni chhupa di ho usne.<br><br>
-    Woh sikhati thi bina shabd ke, ki taqat awaaz se nahi, santulan se dikhai jaati hai aur izzat, sirf bartav se milti hai.<br><br>
-    Uske andaaz mein ek sukoon tha, na dikhawa, na dabav.<br>
-    Bas ek halka sa noor, jo sab kuch aasaan bana deta tha.<br><br>
-    Kabhi kabhi sochta hoon, kaise itni shaanti ek insaan mein sama sakti hai.<br>
-    Jaise zindagi ne use thoda zyada samjha diya ho baaki sabse.<br><br>
-    Aur pata nahi kaise, par uski wo shaant si seekh meri zindagi ka hissa ban gayi.<br>
-    Ab har afra-tafri mein, main usi jaisa thehraav dhoondhta hoon.</p>
-    <p class="afterthought">“Zindagi ke daud mein, usne thehraav likh diya.”</p>
-    <div class="buttons">
-      <button id="back2">← Back</button>
-      <button id="next2">Next →</button>
-    </div>
+<!-- MENU -->
+<section id="menu" class="menu">
+  <h1>Choose a Chapter</h1>
+  <div class="grid">
+    <div class="menu-card" onclick="goTo('spark')"><span>1. Naram per Atoot</span></div>
+    <div class="menu-card" onclick="goTo('calm')"><span>2. Narmi mei Taqat</span></div>
+    <div class="menu-card" onclick="goTo('friend')"><span>3. Sahaj aur Sachi</span></div>
+    <div class="menu-card" onclick="goTo('love')"><span>4. Sukoon Bhari Yaad</span></div>
   </div>
+</section>
 
-  <div class="container" id="page3">
-    <h1>Sahaj aur Sacchi</h1>
-    <p>Kuch log shor nahi karte, bas saath ka ehsaas ban jaate hain.<br>
-    Woh aisi hi thi — bina kahe sab keh jaane wali.<br><br>
-    Har mushkil mein, bina bulaye khadi milti thi, jaise zimmedaari nahi, aadat ho sambhalne ki.<br>
-    Uske hone se afra-tafri bhi thodi kam lagti thi.<br><br>
-    Uska saath koi wada nahi tha, par har dafa nibhaaya gaya.<br>
-    Bina shart, bina shor, sirf ek sachcha sa junoon tha.<br><br>
-    Kabhi hans kar, kabhi daant kar, woh bas sambhal leti thi sab kuch.<br>
-    Jaise dosti uske liye ek farz nahi, ek ehsaas thi.<br><br>
-    Kya kehte hain aise logon ko? Jo dost se badhkar, dua lagte hain — jo apne hone se hi tumhe behtar bana dete hain.<br><br>
-    Aur agar zindagi fir pooche, “Kaun sa saath dobara chuno?” toh jawab wahi rahega — woh jo saath rahi.</p>
-    <p class="afterthought">“Kabhi kabhi ek dost saare sawalo ka jawab bann jata hai.”</p>
-    <div class="buttons">
-      <button id="back3">← Back</button>
-      <button id="next3">Next →</button>
-    </div>
+<!-- SPARK -->
+<section id="spark" class="poem-page">
+  <h1>Naram per Atoot</h1>
+  <div class="poem">
+Woh kehti hai,
+“Main thodi wierd hoon.”
+Shayad isiliye samajh nahi aati 
+bas mehsoos hoti hoon.
+
+Woh sabse alag hai 
+shaant, par mazboot.
+Uske andaaz mein masti hai,
+aur soch mein gehraai.
+
+Usme ek ajeeb sa sukoon hai,
+jaise zindagi ne use thoda zyada samjha ho.
+Na shor, na dikhawa 
+sirf ek noor, jo sab keh jaata hai.
+
+Taqat agar insaan hoti,
+to woh Payal jaise hoti 
+narm, par atoot;
+bal bhi, aur shanti bhi.
+
+Usne sikhaya,
+ki taqat ko ghamand se nahi,
+sahajta se jeena chahiye.
+
+Woh hi to hai 
+ek roshni jo jalaati nahi,
+par aaspaas sab kuch roshan kar deti hai.
   </div>
-
-  <div class="container" id="page4">
-    <h1>Sukoon Bhari Yaad</h1>
-    <p>Usse milna, jaise pehli dafa dil ka darwaza khula ho, zameen se judi, par sapno jaisi.<br>
-    Jo raat ke teen baje bhi uth ke keh deti thi, “Safe flight, I love you,”<br>
-    aur jab phone chori ho gaya tha, toh bina kahe naya laa di thi.<br><br>
-    Woh sirf pyaar nahi karti thi, woh pyaar ko jeeti thi — Teej waale din tithi ke hisaab se wish karne par bhavuk ho jaane wali,<br>
-    aur Shivling ko dil se apnane wali, jaise har dua uske haath se nikal kar, seedha mujhe milti ho.<br><br>
-    Woh apni duniya khud sambhalne wali thi, apni ladai khud ladti thi.<br>
-    Phir bhi, pata nahi kaise, mujhe apni kahani ka chhota sa hissa bana liya,<br>
-    aur bas wahi, mere liye sab kuch tha.<br><br>
-    Main kabhi uska savior banna nahi chahta tha, sirf itna chahta tha, ki jab duniya uljhe,<br>
-    main uske paas khada rahoon, tab tak, jab tak woh khud raasta dhoondh le.<br><br>
-    Uske saath, main badla — thoda aur dhairya seekha, thoda aur pyaar.<br>
-    Usne mujhe yun samjha, ki aaj main shayad kisi ke liye ekdum green flag ban gaya hoon.<br><br>
-    Aur chahe waqt ne hum dono ko thoda rukne pe majboor kiya ho, mera yakeen wahi hai —<br>
-    yeh kahani adhoori nahi, bas rukkar saans le rahi hai.</p>
-    <p class="afterthought">“Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue.”</p>
-    <div class="buttons">
-      <button id="back4">← Back</button>
-    </div>
+  <div class="transition">“Aur shayad isi liye, uske hone se duniya thodi behtar lagti hai.”</div>
+  <div class="buttons">
+    <button onclick="goTo('menu')">Back to All Poems</button>
+    <button onclick="goTo('calm')">Next Phase →</button>
   </div>
+</section>
 
-  <script>
-    const pages = document.querySelectorAll(".container");
-    let currentPage = 0;
+<!-- CALM -->
+<section id="calm" class="poem-page">
+  <h1>Narmi Mein Taqat</h1>
+  <div class="poem">
+Kuch log shor mein bhi thehraav laate hain,
+woh unmein se ek thi
+na kuch zyada, na kuch kam,
+bas jitni zarurat thi duniya ko sambhalne ki.
 
-    function showPage(index) {
-      pages.forEach((page, i) => {
-        page.classList.remove("active");
-        if (i === index) page.classList.add("active");
-      });
-    }
+Uske har lafz mein ek narmi thi,
+jo gusse ko bhi soch mein badal deti.
+Jaise har mushkil ke andar
+ek halki si roshni chhupa di ho usne.
 
-    document.getElementById("next1").onclick = () => { currentPage = 1; showPage(currentPage); };
-    document.getElementById("next2").onclick = () => { currentPage = 2; showPage(currentPage); };
-    document.getElementById("next3").onclick = () => { currentPage = 3; showPage(currentPage); };
+Woh sikhati thi bina shabd ke,
+ki taqat awaaz se nahi,
+santulan se dikhai jaati hai 
+aur izzat, sirf bartav se milti hai.
 
-    document.getElementById("back2").onclick = () => { currentPage = 0; showPage(currentPage); };
-    document.getElementById("back3").onclick = () => { currentPage = 1; showPage(currentPage); };
-    document.getElementById("back4").onclick = () => { currentPage = 2; showPage(currentPage); };
+Uske andaaz mein ek sukoon tha,
+na dikhawa, na dabav.
+Bas ek halka sa noor,
+jo sab kuch aasaan bana deta tha.
 
-    const music = document.getElementById("bg-music");
-    const musicBtn = document.getElementById("music-btn");
+Kabhi kabhi sochta hoon,
+kaise itni shaanti ek insaan mein sama sakti hai.
+Jaise zindagi ne use
+thoda zyada samjha diya ho baaki sabse.
 
-    musicBtn.onclick = () => {
-      if (music.paused) {
-        music.play();
-        musicBtn.textContent = "🔇";
-      } else {
-        music.pause();
-        musicBtn.textContent = "🎵";
-      }
-    };
-  </script>
+Aur pata nahi kaise,
+par uski wo shaant si seekh
+meri zindagi ka hissa ban gayi 
+ab har afra-tafri mein,
+main usi jaisa thehraav dhoondhta hoon.
+  </div>
+  <div class="transition">“Zindagi ke daud mein, usne thehraav likh diya.”</div>
+  <div class="buttons">
+    <button onclick="goTo('spark')">← Back</button>
+    <button onclick="goTo('friend')">Next →</button>
+  </div>
+</section>
+
+<!-- FRIEND -->
+<section id="friend" class="poem-page">
+  <h1>Sahaj aur Sacchi</h1>
+  <div class="poem">
+Kuch log shor nahi karte,
+bas saath ka ehsaas ban jaate hain.
+Woh aisi hi thi 
+bina kahe sab keh jaane wali.
+
+Har mushkil mein, bina bulaye khadi milti thi,
+jaise zimmedaari nahi, aadat ho sambhalne ki.
+Uske hone se afra-tafri bhi
+thodi kam lagti thi.
+
+Uska saath koi wada nahi tha,
+par har dafa nibhaaya gaya.
+Bina shart, bina shor,
+sirf ek sachcha sa junoon tha.
+
+Kabhi hans kar, kabhi daant kar,
+woh bas sambhal leti thi sab kuch.
+Jaise dosti uske liye
+ek farz nahi, ek ehsaas thi.
+
+Kya kehte hain aise logon ko?
+Jo dost se badhkar, dua lagte hain 
+jo apne hone se hi
+tumhe behtar bana dete hain.
+
+Aur agar zindagi fir pooche,
+“kaun sa saath dobara chuno?”
+toh jawab wahi rahega 
+woh jo saath rahi.
+  </div>
+  <div class="transition">“Kabhi kabhi ek dost saare sawalo ka jawab bann jata hai.”</div>
+  <div class="buttons">
+    <button onclick="goTo('menu')">← Back</button>
+    <button onclick="goTo('love')">Next →</button>
+  </div>
+</section>
+
+<!-- LOVE -->
+<section id="love" class="poem-page">
+  <h1>Sukoon Bhari Yaad</h1>
+  <div class="poem">
+Usse milna, jaise pehli dafa dil ka darwaza khula ho 
+zameen se judi, par sapno jaisi.
+Jo raat ke teen baje bhi uth ke keh deti thi, “Safe flight, I love you,”
+aur jab phone chori ho gaya tha, toh bina kahe naya laa di thi.
+
+Woh sirf pyaar nahi karti thi, woh pyaar ko jeeti thi 
+Teej waale din tithi ke hisaab se wish karne par bhavuk ho jaane wali,
+aur Shivling ko dil se apnane wali,
+jaise har dua uske haath se nikal kar, seedha mujhe milti ho.
+
+Woh apni duniya khud sambhalne wali thi,
+apni ladai khud ladti thi.
+Phir bhi, pata nahi kaise,
+mujhe apni kahani ka chhota sa hissa bana liya 
+aur bas wahi, mere liye sab kuch tha.
+
+Main kabhi uska savior banna nahi chahta tha,
+sirf itna chahta tha, ki jab duniya uljhe,
+main uske paas khada rahoon,
+tab tak, jab tak woh khud raasta dhoondh le.
+
+Uske saath, main badla 
+thoda aur dhairya seekha, thoda aur pyaar.
+Usne mujhe yun samjha,
+ki aaj main shayad kisi ke liye ekdum green flag ban gaya hoon.
+
+Aur chahe waqt ne hum dono ko thoda rukne pe majboor kiya ho,
+mera yakeen wahi hai yeh kahani adhoori nahi,
+bas rukkar saans le rahi hai.  
+  </div>
+  <div class="transition">“And maybe that’s how forever begins — quietly.”</div>
+  <div class="transition">“Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue..”</div>
+  <div class="buttons">
+    <button onclick="goTo('friend')">← Back</button>
+    <button onclick="goTo('final')">Next →</button>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section id="final" class="final">
+  <h1>If you ever lose your calm,<br>remember — you are someone’s peace.</h1>
+  <div class="signature">for Payal.</div>
+  <button onclick="goTo('menu')">Back to the beginning</button>
+</section>
+
+<script>
+  const sections = document.querySelectorAll("section");
+  function goTo(id){
+    sections.forEach(sec=>sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    if(id==="intro") document.body.style.background="#f5e8e6";
+    else if(id==="menu") document.body.style.background="#fbe8ec";
+    else if(id==="spark") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
+    else if(id==="calm") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
+    else if(id==="friend") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
+    else if(id==="love") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
+    else if(id==="final") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
+  }
+</script>
+
 </body>
 </html>
