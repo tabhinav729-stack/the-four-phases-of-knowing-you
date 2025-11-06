@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
+<head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>for Payal</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
@@ -15,8 +15,8 @@
   }
   html, body {
     height: 100%;
-    overflow: hidden;
     font-family: "Cormorant Garamond", serif;
+    overflow: hidden;
   }
   body {
     background-color: #f5e8e6;
@@ -113,21 +113,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem 0 2rem;
+    padding: 1.2rem 0 2rem;
   }
   .menu h1 {
     font-size: 2rem;
     color: #6b3e55;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     letter-spacing: 1px;
   }
 
-  /* GRID layout */
   .grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(220px, 1fr));
     gap: 1.2rem 1.4rem;
-    width: 70%;
+    width: 75%;
     max-width: 850px;
     justify-content: center;
     margin-bottom: 1rem;
@@ -169,19 +168,34 @@
     background-color: rgba(75,46,46,0.5);
   }
 
-  /* MOBILE layout */
+  /* ---------- MOBILE FIX ---------- */
   @media (max-width: 700px) {
+    html, body {
+      overflow: hidden;
+    }
+    .menu {
+      justify-content: flex-start;
+      padding-top: 2rem;
+      height: 100vh;
+    }
+    .menu h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
     .grid {
       grid-template-columns: 1fr;
       gap: 1rem;
       width: 90%;
+      padding-bottom: 3rem;
     }
     .menu-card {
-      height: 200px;
+      height: 180px;
+      font-size: 1.15rem;
     }
     .grid .menu-card:nth-child(5) {
       grid-column: auto;
       width: 100%;
+      height: 180px;
     }
   }
 
@@ -203,19 +217,7 @@
     max-height: 65vh;
     overflow-y: auto;
     padding-right: 0.5rem;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-    transition: scrollbar-color 0.3s ease;
   }
-  .poem:hover {scrollbar-color: rgba(75,46,46,0.3) transparent;}
-  .poem::-webkit-scrollbar {width: 6px;}
-  .poem::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-  }
-  .poem:hover::-webkit-scrollbar-thumb {background-color: rgba(75,46,46,0.3);}
-
   .transition {
     font-style: italic;
     margin-bottom: 2rem;
@@ -258,14 +260,13 @@
     margin-bottom: 3rem;
   }
 
-  @media (max-width: 640px) {
+  @media(max-width:640px){
     h1 {font-size: 1.6rem;}
     .menu-card {height: 180px; font-size: 1.1rem;}
     .poem {font-size: 1rem;}
   }
 </style>
-</head>
-
+</head> 
 <body>
 
 <!-- ✅ Background Music -->
