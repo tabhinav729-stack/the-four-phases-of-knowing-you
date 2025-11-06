@@ -8,16 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     height: 100%;
     font-family: "Cormorant Garamond", serif;
     overflow-x: hidden;
-   overflow-y: auto;
+    overflow-y: auto;
   }
   body {
     background-color: #f5e8e6;
@@ -42,11 +38,7 @@
     pointer-events: none;
     transition: opacity 1s ease, transform 1s ease;
   }
-  section.active {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-  }
+  section.active { opacity: 1; transform: scale(1); pointer-events: auto; }
 
   /* ---------- INTRO ---------- */
   .card {
@@ -92,10 +84,7 @@
     transform: translateY(20px);
     animation: floatUp 1s 8s forwards;
   }
-  .begin:hover {
-    background: #4b2e2e;
-    color: #f5e8e6;
-  }
+  .begin:hover { background: #4b2e2e; color: #f5e8e6; }
   .signature {
     margin-top: 20px;
     font-style: italic;
@@ -108,14 +97,14 @@
   /* ---------- MENU ---------- */
   .menu {
     overflow-y: auto;
-  overflow-x: hidden;
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 2rem 0 3rem;
+    overflow-x: hidden;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem 0 3rem;
   }
   .menu h1 {
     font-size: 2rem;
@@ -123,7 +112,6 @@
     margin-bottom: 1.5rem;
     letter-spacing: 1px;
   }
-
   .grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -149,10 +137,7 @@
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
-  .menu-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  }
+  .menu-card:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
   .grid .menu-card:nth-child(5) {
     grid-column: 1 / span 2;
     justify-self: center;
@@ -168,37 +153,6 @@
   }
   .menu::-webkit-scrollbar-thumb:hover {
     background-color: rgba(75,46,46,0.5);
-  }
-
-  /* ---------- MOBILE FIX ---------- */
-  @media (max-width: 700px) {
-    html, body {
-      overflow: hidden;
-    }
-    .menu {
-      justify-content: flex-start;
-      padding-top: 2rem;
-      height: 100vh;
-    }
-    .menu h1 {
-      font-size: 1.6rem;
-      margin-bottom: 1.2rem;
-    }
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      width: 90%;
-      padding-bottom: 3rem;
-    }
-    .menu-card {
-      height: 180px;
-      font-size: 1.15rem;
-    }
-    .grid .menu-card:nth-child(5) {
-      grid-column: auto;
-      width: 100%;
-      height: 180px;
-    }
   }
 
   /* ---------- POEMS ---------- */
@@ -242,10 +196,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
-  button:hover {
-    background-color: #5b253d;
-    transform: scale(1.05);
-  }
+  button:hover { background-color: #5b253d; transform: scale(1.05); }
 
   /* ---------- FINAL ---------- */
   .final h1 {
@@ -268,13 +219,11 @@
     .poem {font-size: 1rem;}
   }
 </style>
-</head> 
+</head>
 <body>
 
 <!-- ✅ Background Music -->
-<audio id="bgAudio" autoplay loop>
-  <source src="https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/intro%2Bmenu.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgAudio" autoplay loop></audio>
 
 <!-- INTRO -->
 <section id="intro" class="active">
@@ -290,7 +239,6 @@
   </div>
 </section>
 
-
 <!-- MENU -->
 <section id="menu" class="menu">
   <h1>Choose a Chapter</h1>
@@ -301,9 +249,9 @@
     <div class="menu-card" onclick="goTo('love')"><span>4. Sukoon Bhari Yaad</span></div>
     <div class="menu-card" onclick="goTo('moment')"><span>5. Us Pal Ka Sukoon</span></div>
   </div>
- </section>
- 
-<!-- SPARK -->
+</section>
+
+<!-- POEM 1 -->
 <section id="spark" class="poem-page">
   <h1>Naram Par Atoot</h1>
   <div class="poem">
@@ -342,7 +290,7 @@ par aaspaas sab kuch roshan kar deti hai.
   </div>
 </section>
 
-<!-- CALM -->
+<!-- POEM 2 -->
 <section id="calm" class="poem-page">
   <h1>Thehraav Mein Taqat</h1>
   <div class="poem">
@@ -380,12 +328,12 @@ main usi jaisa thehraav dhoondhta hoon.
   <div class="transition">“Zindagi ke daud mein, usne thehraav likh diya.”</div>
   <div class="buttons">
     <button onclick="goTo('spark')">← Back</button>
-   <button onclick="goTo('menu')">Back to All Poems</button>
+    <button onclick="goTo('menu')">Back to All Poems</button>
     <button onclick="goTo('friend')">Next →</button>
   </div>
 </section>
 
-<!-- FRIEND -->
+<!-- POEM 3 -->
 <section id="friend" class="poem-page">
   <h1>Sahaj Aur Sacchi</h1>
   <div class="poem">
@@ -422,12 +370,12 @@ tumhe behtar bana dete hain.
   <div class="transition">“Kabhi kabhi ek insaan sirf dost nahi hota, poori zindagi ka sabse khubsoorat jawab hota hai.”</div>
   <div class="buttons">
     <button onclick="goTo('calm')">← Back</button>
-   <button onclick="goTo('menu')">Back to All Poems</button>
+    <button onclick="goTo('menu')">Back to All Poems</button>
     <button onclick="goTo('love')">Next →</button>
   </div>
 </section>
 
-<!-- LOVE -->
+<!-- POEM 4 -->
 <section id="love" class="poem-page">
   <h1>Sukoon Bhari Yaad</h1>
   <div class="poem">
@@ -466,12 +414,12 @@ ke usne mujhe apne bharose ke laayak samjha.
   <div class="transition">“Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue.”</div>
   <div class="buttons">
     <button onclick="goTo('friend')">← Back</button>
-   <button onclick="goTo('menu')">Back to All Poems</button>
+    <button onclick="goTo('menu')">Back to All Poems</button>
     <button onclick="goTo('moment')">Next →</button>
   </div>
 </section>
 
-<!-- MOMENT -->
+<!-- POEM 5 -->
 <section id="moment" class="poem-page">
   <h1>Us Pal Ka Sukoon</h1>
   <div class="poem">
@@ -509,8 +457,7 @@ caramel popcorn pe seedha muh fula lena
 itni chhoti chhoti baatein bhi yaad rehti hain,
 shayad isiliye, kyunki aapke bina sab kuch adhoora lagta hai.
 
-Main jaanta hoon…
-aap raz ho khulti nahi ho kisi ke saamne.
+Main jaanta hoon… aap raz ho khulti nahi ho kisi ke saamne.
 Jo dikhati ho gambhir,
 andar se poore dil mein bachpana sambhal rakha hai.
 Sabko dikh jaati ho, par samajh koi nahi paata.
@@ -558,7 +505,7 @@ aap phir keh do,
   <div class="transition">“Woh sirf ek pal tha, par samajh aa gaya — sukoon waqt se nahi, insaan se milta hai.”</div>
   <div class="buttons">
     <button onclick="goTo('love')">← Back</button>
-   <button onclick="goTo('menu')">Back to All Poems</button>
+    <button onclick="goTo('menu')">Back to All Poems</button>
     <button onclick="goTo('final')">Next →</button>
   </div>
 </section>
@@ -567,23 +514,105 @@ aap phir keh do,
 <section id="final" class="final">
   <h1>If you ever lose your calm,<br>remember — you are someone’s peace.</h1>
   <div class="signature">-Abhinav</div>
- <button onclick="goTo('intro')">Back to Intro</button>
+  <button onclick="goTo('intro')">Back to Intro</button>
 </section>
 
+<!-- 🎧 MUSIC CONTROL BUTTON -->
+<button id="toggleMusic" style="
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background: rgba(75,46,46,0.8);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+">⏸</button>
+
+<!-- SCRIPT -->
 <script>
   const sections = document.querySelectorAll("section");
-  function goTo(id){
-    sections.forEach(sec=>sec.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-    if(id==="intro") document.body.style.background="#f5e8e6";
-    else if(id==="menu") document.body.style.background="#fbe8ec";
-    else if(id==="spark") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
-    else if(id==="calm") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
-    else if(id==="friend") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
-    else if(id==="love") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
-    else if(id==="moment") document.body.style.background="linear-gradient(180deg,#fde8ef,#f7c4d4)";
-    else if(id==="final") document.body.style.background="linear-gradient(180deg,#fce1eb,#f6bfcf)";
+  const bgAudio = document.getElementById("bgAudio");
+
+  let fadeInterval;
+  let currentTrack = "";
+
+  // Fade helper
+  function fadeAudio(targetVolume, duration, callback) {
+    clearInterval(fadeInterval);
+    const startVolume = bgAudio.volume;
+    const step = (targetVolume - startVolume) / (duration / 50);
+
+    fadeInterval = setInterval(() => {
+      bgAudio.volume = Math.max(0, Math.min(1, bgAudio.volume + step));
+      if ((step < 0 && bgAudio.volume <= targetVolume) || (step > 0 && bgAudio.volume >= targetVolume)) {
+        clearInterval(fadeInterval);
+        if (callback) callback();
+      }
+    }, 50);
   }
+
+  function playMusic(trackSrc, volume = 0.4) {
+    if (currentTrack === trackSrc) return;
+    currentTrack = trackSrc;
+
+    fadeAudio(0, 1500, () => {
+      bgAudio.src = trackSrc;
+      bgAudio.play().catch(() => {});
+      fadeAudio(volume, 1500);
+    });
+  }
+
+  function goTo(id) {
+    sections.forEach(sec => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+
+    const bgs = {
+      intro: "#f5e8e6",
+      menu: "#fbe8ec",
+      spark: "linear-gradient(180deg,#fde8ef,#f7c4d4)",
+      calm: "linear-gradient(180deg,#fce1eb,#f6bfcf)",
+      friend: "linear-gradient(180deg,#fde8ef,#f7c4d4)",
+      love: "linear-gradient(180deg,#fce1eb,#f6bfcf)",
+      moment: "linear-gradient(180deg,#fde8ef,#f7c4d4)",
+      final: "linear-gradient(180deg,#fce1eb,#f6bfcf)"
+    };
+    document.body.style.background = bgs[id];
+
+    const base = "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/";
+
+    switch(id) {
+      case "intro":
+      case "menu": playMusic(base + "intro+menua.mp3", 0.35); break;
+      case "spark": playMusic(base + "poem 1a.mp3", 0.38); break;
+      case "calm": playMusic(base + "poem2a.mp3", 0.38); break;
+      case "friend": playMusic(base + "poem3a.mp3", 0.4); break;
+      case "love": playMusic(base + "poem4a.mp3", 0.4); break;
+      case "moment": playMusic(base + "poem5a.mp3", 0.38); break;
+      case "final": playMusic(base + "poem6a.mp3", 0.35); break;
+    }
+  }
+
+  // Pause/Play control
+  const toggleBtn = document.getElementById("toggleMusic");
+  let isPlaying = true;
+
+  toggleBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      fadeAudio(0, 1200, () => bgAudio.pause());
+      toggleBtn.textContent = "▶️";
+    } else {
+      bgAudio.play();
+      fadeAudio(0.35, 1200);
+      toggleBtn.textContent = "⏸";
+    }
+    isPlaying = !isPlaying;
+  });
 </script>
 
 </body>
