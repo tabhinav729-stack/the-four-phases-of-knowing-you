@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+ <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>for Payal</title>
@@ -8,297 +8,264 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;overflow:hidden;font-family:"Cormorant Garamond",serif;}
-  body{
-    background-color:#f5e8e6;
-    color:#4b2e2e;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:background 1s ease;
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: "Cormorant Garamond", serif;
+  }
+  body {
+    background-color: #f5e8e6;
+    color: #4b2e2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 1s ease;
   }
 
-  section{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    padding:40px;
-    opacity:0;
-    transform:scale(1.02);
-    pointer-events:none;
-    transition:opacity 1s ease,transform 1s ease;
+  /* ---------- SECTION BEHAVIOR ---------- */
+  section {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    opacity: 0;
+    transform: scale(1.02);
+    pointer-events: none;
+    transition: opacity 1s ease, transform 1s ease;
   }
-  section.active{
-    opacity:1;
-    transform:scale(1);
-    pointer-events:auto;
+  section.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
   }
 
   /* ---------- INTRO ---------- */
-  .card{
-    max-width:920px;
-    padding:40px;
-    border-radius:12px;
-    background:rgba(255,255,255,0.75);
-    box-shadow:0 20px 60px rgba(0,0,0,0.06);
-    text-align:center;
+  .card {
+    max-width: 920px;
+    padding: 40px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    text-align: center;
   }
-  h1{font-size:2.1rem;margin-bottom:18px;opacity:0;transform:translateY(18px);animation:floatUp .9s .2s forwards;}
-  .line{font-size:1.05rem;line-height:1.65;color:#4b2e2e;opacity:0;transform:translateY(22px);}
-  .line.l1{animation:floatUp 1s .8s forwards;}
-  .line.l2{animation:floatUp 1s 2s forwards;}
-  .line.l3{animation:floatUp 1s 3.6s forwards;}
-  .line.l4{animation:floatUp 1s 5s forwards;}
-  .line.l5{animation:floatUp 1s 6.6s forwards;font-weight:600;}
-  @keyframes floatUp{to{opacity:1;transform:translateY(0);}}
+  h1 {
+    font-size: 2.1rem;
+    margin-bottom: 18px;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: floatUp 0.9s 0.2s forwards;
+  }
+  .line {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #4b2e2e;
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  .line.l1 {animation: floatUp 1s .8s forwards;}
+  .line.l2 {animation: floatUp 1s 2s forwards;}
+  .line.l3 {animation: floatUp 1s 3.6s forwards;}
+  .line.l4 {animation: floatUp 1s 5s forwards;}
+  .line.l5 {animation: floatUp 1s 6.6s forwards; font-weight:600;}
+  @keyframes floatUp {to{opacity:1;transform:translateY(0);}}
 
-  .begin{
-    display:inline-block;
-    margin-top:28px;
-    padding:10px 28px;
-    border-radius:999px;
-    border:2px solid #4b2e2e;
-    background:transparent;
-    color:#4b2e2e;
-    font-weight:600;
-    cursor:pointer;
-    opacity:0;
-    transform:translateY(20px);
-    animation:floatUp 1s 8s forwards;
+  .begin {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 10px 28px;
+    border-radius: 999px;
+    border: 2px solid #4b2e2e;
+    background: transparent;
+    color: #4b2e2e;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatUp 1s 8s forwards;
   }
-  .begin:hover{background:#4b2e2e;color:#f5e8e6;}
-  .signature{margin-top:20px;font-style:italic;color:rgba(75,46,46,0.85);opacity:0;animation:fadeIn 1s 8.8s forwards;}
-  @keyframes fadeIn{to{opacity:0.9}}
+  .begin:hover {
+    background: #4b2e2e;
+    color: #f5e8e6;
+  }
+  .signature {
+    margin-top: 20px;
+    font-style: italic;
+    color: rgba(75,46,46,0.85);
+    opacity: 0;
+    animation: fadeIn 1s 8.8s forwards;
+  }
+  @keyframes fadeIn {to{opacity:0.9}}
 
   /* ---------- MENU ---------- */
-  .menu h1{font-size:2rem;color:#6b3e55;margin-bottom:1.5rem;letter-spacing:1px;}
+  .menu {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0 2rem;
+  }
+  .menu h1 {
+    font-size: 2rem;
+    color: #6b3e55;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+  }
 
- /* ✅ Balanced scrollable menu for all devices */
-.menu {
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  height: 100vh;
-  scroll-behavior: smooth;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.5rem 0 2rem;
-}
-
-/* Grid layout for desktop/tablet */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
-  gap: 1rem 1.2rem;
-  width: 70%;
-  max-width: 850px;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-/* Card adjustments */
-.menu-card {
-  height: 180px;
-}
-
-/* Center the 5th poem card */
-.grid .menu-card:nth-child(5) {
-  grid-column: 1 / span 2;
-  justify-self: center;
-  width: 240px;
-  height: 190px;
-}
-
-/* Subtle scrollbar styling */
-.menu::-webkit-scrollbar {
-  width: 6px;
-}
-.menu::-webkit-scrollbar-thumb {
-  background-color: rgba(75, 46, 46, 0.25);
-  border-radius: 4px;
-}
-.menu::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(75, 46, 46, 0.4);
-}
-
-/* 📱 Mobile view — single column */
-@media (max-width: 700px) {
+  /* GRID layout */
   .grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 1.2rem 1.4rem;
+    width: 70%;
+    max-width: 850px;
+    justify-content: center;
+    margin-bottom: 1rem;
   }
   .menu-card {
-    height: 200px;
+    position: relative;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #c39da8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .menu-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   }
   .grid .menu-card:nth-child(5) {
-    grid-column: auto;
-    width: 100%;
+    grid-column: 1 / span 2;
+    justify-self: center;
+    width: 240px;
+    height: 190px;
   }
-}
 
-
-.single-card-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
-
-.single-card-wrapper .menu-card {
-  width: 60%;
-  max-width: 400px;
-}
-
- 
- .menu-card{
-    position:relative;
-    height:220px;
-    border-radius:16px;
-    overflow:hidden;
-    cursor:pointer;
-    background:#f3c6d3;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    font-size:1.3rem;
-    letter-spacing:1px;
-    text-shadow:0 2px 4px rgba(0,0,0,0.3);
-    transition:transform 0.6s ease,box-shadow 0.6s ease;
-    z-index:2;
+  /* scrollbar styling */
+  .menu::-webkit-scrollbar {width: 6px;}
+  .menu::-webkit-scrollbar-thumb {
+    background-color: rgba(75,46,46,0.3);
+    border-radius: 3px;
   }
-  .menu-card:hover{transform:scale(1.03);box-shadow:0 10px 20px rgba(0,0,0,0.2);}
-  .menu-card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.25);
-    pointer-events:none;
+  .menu::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(75,46,46,0.5);
   }
-  .menu-card span{position:relative;z-index:2;}
+
+  /* MOBILE layout */
+  @media (max-width: 700px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      width: 90%;
+    }
+    .menu-card {
+      height: 200px;
+    }
+    .grid .menu-card:nth-child(5) {
+      grid-column: auto;
+      width: 100%;
+    }
+  }
 
   /* ---------- POEMS ---------- */
-  .poem-page h1{font-size:2rem;letter-spacing:1px;margin-bottom:2rem;color:#8a3b5e;text-align:center;width:100%;}
-  .poem{max-width:650px;line-height:1.8;font-size:1.1rem;white-space:pre-line;margin-bottom:2rem;}
-
-  .poem-page {overflow:hidden;}
+  .poem-page h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: #8a3b5e;
+    text-align: center;
+    width: 100%;
+  }
   .poem {
-    max-height:65vh;
-    overflow-y:auto;
-    padding-right:0.5rem;
-    scrollbar-width:thin;
-    scrollbar-color:transparent transparent;
-    transition:scrollbar-color 0.3s ease;
+    max-width: 650px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    white-space: pre-line;
+    margin-bottom: 2rem;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s ease;
   }
-  .poem:hover {scrollbar-color:rgba(75,46,46,0.3) transparent;}
-  .poem::-webkit-scrollbar {width:6px;}
+  .poem:hover {scrollbar-color: rgba(75,46,46,0.3) transparent;}
+  .poem::-webkit-scrollbar {width: 6px;}
   .poem::-webkit-scrollbar-thumb {
-    background-color:transparent;
-    border-radius:3px;
-    transition:background-color 0.3s ease;
+    background-color: transparent;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
   }
-  .poem:hover::-webkit-scrollbar-thumb {
-    background-color:rgba(75,46,46,0.3);
-  }
+  .poem:hover::-webkit-scrollbar-thumb {background-color: rgba(75,46,46,0.3);}
 
-  .transition{font-style:italic;margin-bottom:2rem;color:#6b2f4b;font-size:1rem;opacity:0.8;}
-  .buttons{display:flex;justify-content:center;gap:1rem;}
-  button{
-    border:none;
-    background-color:#8a3b5e;
-    color:white;
-    padding:0.7rem 1.5rem;
-    border-radius:30px;
-    font-size:0.95rem;
-    cursor:pointer;
-    transition:background-color 0.3s ease,transform 0.3s ease;
+  .transition {
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: #6b2f4b;
+    font-size: 1rem;
+    opacity: 0.8;
   }
-  button:hover{background-color:#5b253d;transform:scale(1.05);}
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  button {
+    border: none;
+    background-color: #8a3b5e;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  button:hover {
+    background-color: #5b253d;
+    transform: scale(1.05);
+  }
 
   /* ---------- FINAL ---------- */
-  .final h1{
-    font-size:1.6rem;
-    max-width:700px;
-    line-height:1.8;
-    margin-bottom:2rem;
-    text-align:center;
+  .final h1 {
+    font-size: 1.6rem;
+    max-width: 700px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    text-align: center;
   }
-  .final .signature{
-    font-style:italic;
-    font-size:1.1rem;
-    color:#7a3b56;
-    margin-bottom:3rem;
-  }
-
-  @media(max-width:640px){
-    h1{font-size:1.6rem}
-    .menu-card{height:180px;font-size:1.1rem}
-    .poem{font-size:1rem}
+  .final .signature {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #7a3b56;
+    margin-bottom: 3rem;
   }
 
- /* ✅ Make the menu scrollable with a visible scrollbar */
-.menu {
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  height: 100vh;
-  scroll-behavior: smooth;
-}
-
-/* Optional – prettier scrollbar styling (works on Chrome, Edge, Safari) */
-.menu::-webkit-scrollbar {
-  width: 8px;
-}
-
-.menu::-webkit-scrollbar-thumb {
-  background-color: rgba(75,46,46,0.3);
-  border-radius: 4px;
-}
-
-.menu::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(75,46,46,0.5);
-}
-
-/* Keep the layout responsive and neat */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(250px, 1fr));
-  gap: 1.5rem;
-  width: 80%;
-  max-width: 900px;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-/* Center the 5th poem neatly below the first four */
-.grid .menu-card:nth-child(5) {
-  grid-column: 1 / span 2;
-  justify-self: center;
-  width: 250px;
-  height: 220px;
-}
-
-/* 📱 On mobile, stack poems vertically */
-@media (max-width: 700px) {
-  .grid {
-    grid-template-columns: 1fr;
-    width: 90%;
+  @media (max-width: 640px) {
+    h1 {font-size: 1.6rem;}
+    .menu-card {height: 180px; font-size: 1.1rem;}
+    .poem {font-size: 1rem;}
   }
-  .grid .menu-card:nth-child(5) {
-    grid-column: auto;
-    width: 100%;
-    max-width: none;
-  }
-}
-
 </style>
 </head>
+
 <body>
 
 <!-- ✅ Background Music -->
