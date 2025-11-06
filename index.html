@@ -182,6 +182,23 @@
     .menu-card{height:180px;font-size:1.1rem}
     .poem{font-size:1rem}
   }
+
+ /* Center the last (5th) menu card in the grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 80%;
+  max-width: 900px;
+  justify-items: center;
+}
+
+.grid .menu-card:nth-child(5) {
+  grid-column: 1 / -1;  /* makes it span both columns */
+  width: 60%;
+  max-width: 400px;
+}
+
 </style>
 </head>
 <body>
