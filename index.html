@@ -77,35 +77,68 @@
   /* ---------- MENU ---------- */
   .menu h1{font-size:2rem;color:#6b3e55;margin-bottom:1.5rem;letter-spacing:1px;}
 
- /* ✅ Responsive layout for 5 poems */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(250px, 1fr));
-  gap: 1.5rem;
-  width: 80%;
-  max-width: 900px;
-  justify-content: center;
+ /* ✅ Balanced scrollable menu for all devices */
+.menu {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  height: 100vh;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0 2rem;
 }
 
-/* Center the 5th card under both columns */
+/* Grid layout for desktop/tablet */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 1rem 1.2rem;
+  width: 70%;
+  max-width: 850px;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Card adjustments */
+.menu-card {
+  height: 180px;
+}
+
+/* Center the 5th poem card */
 .grid .menu-card:nth-child(5) {
   grid-column: 1 / span 2;
   justify-self: center;
-  width: 250px;
-  height: 220px;
+  width: 240px;
+  height: 190px;
 }
 
-/* 📱 Mobile-friendly single-column layout */
+/* Subtle scrollbar styling */
+.menu::-webkit-scrollbar {
+  width: 6px;
+}
+.menu::-webkit-scrollbar-thumb {
+  background-color: rgba(75, 46, 46, 0.25);
+  border-radius: 4px;
+}
+.menu::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(75, 46, 46, 0.4);
+}
+
+/* 📱 Mobile view — single column */
 @media (max-width: 700px) {
   .grid {
-    grid-template-columns: 1fr; /* stack one per row */
+    grid-template-columns: 1fr;
+    gap: 1rem;
     width: 90%;
   }
-
+  .menu-card {
+    height: 200px;
+  }
   .grid .menu-card:nth-child(5) {
     grid-column: auto;
     width: 100%;
-    max-width: none;
   }
 }
 
