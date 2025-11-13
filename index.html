@@ -41,18 +41,58 @@
 <audio id="bgAudio" autoplay loop muted></audio>
 
 <!-- INTRO -->
+<!-- INTRO -->
 <section id="intro" class="active">
   <div class="card">
-    <h1>I’d once told her,<br>“Rome wasn’t built in a day.”</h1>
-    <div class="line">She smiled — and quietly built it anyway.</div>
-    <div class="line">Now, as she leaves, Rome stands ready —</div>
-    <div class="line">made of calm, laughter, and light.</div>
-    <div class="line" style="margin-top:24px;">This space holds five poems —<br>a beginning, a becoming, a bond,<br>a memory, and a moment that stayed.</div>
-    <div class="line">Nothing to decode here — just moments that meant something,<br>arranged gently in their own time.</div>
-    <button class="begin" onclick="goTo('menu')">Begin →</button>
+    <div class="intro-line l1">I’d once told her, “Rome wasn’t built in a day.”</div>
+    <div class="intro-line l2">She smiled — and quietly built it anyway.</div>
+    <div class="intro-line l3">Now, as she leaves, Rome stands ready —</div>
+    <div class="intro-line l4">made of calm, laughter, and light.</div>
+    <div class="intro-line l5">This space holds five poems —</div>
+    <div class="intro-line l6">a beginning, a becoming, a bond, a memory, and a moment that stayed.</div>
+    <div class="intro-line l7">Nothing to decode here — just moments that meant something, arranged gently in their own time.</div>
+    <button class="begin">Begin →</button>
     <div class="signature">for Payal.</div>
   </div>
 </section>
+
+<style>
+  .intro-line {
+    font-size: 1.15rem;
+    color: #4b2e2e;
+    opacity: 0;
+    transform: translateY(20px);
+    line-height: 1.8;
+    animation: floatUpIntro 1s forwards;
+  }
+
+  .intro-line.l1 { animation-delay: 0.4s; }
+  .intro-line.l2 { animation-delay: 1.2s; }
+  .intro-line.l3 { animation-delay: 2s; }
+  .intro-line.l4 { animation-delay: 2.8s; }
+  .intro-line.l5 { animation-delay: 3.8s; }
+  .intro-line.l6 { animation-delay: 4.8s; }
+  .intro-line.l7 { animation-delay: 6s; }
+
+  .begin {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: floatUpIntro 1s 7.5s forwards;
+  }
+
+  .signature {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: floatUpIntro 1s 8.5s forwards;
+  }
+
+  @keyframes floatUpIntro {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 
 <!-- MENU -->
 <section id="menu" class="menu">
