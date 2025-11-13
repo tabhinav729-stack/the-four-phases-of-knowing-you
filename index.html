@@ -24,7 +24,6 @@
     transition: background 1s ease;
   }
 
-  /* ---------- SECTION BEHAVIOR ---------- */
   section {
     position: absolute;
     inset: 0;
@@ -40,7 +39,6 @@
   }
   section.active { opacity: 1; transform: scale(1); pointer-events: auto; }
 
-  /* ---------- INTRO ---------- */
   .card {
     max-width: 920px;
     padding: 40px;
@@ -52,24 +50,13 @@
   h1 {
     font-size: 2.1rem;
     margin-bottom: 18px;
-    opacity: 0;
-    transform: translateY(18px);
-    animation: floatUp 0.9s 0.2s forwards;
   }
   .line {
     font-size: 1.05rem;
     line-height: 1.65;
     color: #4b2e2e;
-    opacity: 0;
-    transform: translateY(22px);
+    margin-top: 8px;
   }
-  .line.l1 {animation: floatUp 1s .8s forwards;}
-  .line.l2 {animation: floatUp 1s 2s forwards;}
-  .line.l3 {animation: floatUp 1s 3.6s forwards;}
-  .line.l4 {animation: floatUp 1s 5s forwards;}
-  .line.l5 {animation: floatUp 1s 6.6s forwards; font-weight:600;}
-  @keyframes floatUp {to{opacity:1;transform:translateY(0);}}
-
   .begin {
     display: inline-block;
     margin-top: 28px;
@@ -80,21 +67,10 @@
     color: #4b2e2e;
     font-weight: 600;
     cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: floatUp 1s 8s forwards;
   }
   .begin:hover { background: #4b2e2e; color: #f5e8e6; }
-  .signature {
-    margin-top: 20px;
-    font-style: italic;
-    color: rgba(75,46,46,0.85);
-    opacity: 0;
-    animation: fadeIn 1s 8.8s forwards;
-  }
-  @keyframes fadeIn {to{opacity:0.9}}
+  .signature { margin-top: 20px; font-style: italic; color: rgba(75,46,46,0.85); }
 
-  /* ---------- MENU ---------- */
   .menu {
     overflow-y: auto;
     overflow-x: hidden;
@@ -106,12 +82,7 @@
     justify-content: flex-start;
     padding: 2rem 0 3rem;
   }
-  .menu h1 {
-    font-size: 2rem;
-    color: #6b3e55;
-    margin-bottom: 1.5rem;
-    letter-spacing: 1px;
-  }
+  .menu h1 { font-size: 2rem; color: #6b3e55; margin-bottom: 1.5rem; letter-spacing: 1px; }
   .grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -145,17 +116,6 @@
     height: 190px;
   }
 
-  /* scrollbar styling */
-  .menu::-webkit-scrollbar {width: 6px;}
-  .menu::-webkit-scrollbar-thumb {
-    background-color: rgba(75,46,46,0.3);
-    border-radius: 3px;
-  }
-  .menu::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(75,46,46,0.5);
-  }
-
-  /* ---------- POEMS ---------- */
   .poem-page h1 {
     font-size: 2rem;
     letter-spacing: 1px;
@@ -165,8 +125,8 @@
     width: 100%;
   }
   .poem {
-    max-width: 650px;
-    line-height: 1.8;
+    max-width: 700px;
+    line-height: 1.85;
     font-size: 1.1rem;
     white-space: pre-line;
     margin-bottom: 2rem;
@@ -194,24 +154,11 @@
     border-radius: 30px;
     font-size: 0.95rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
   }
   button:hover { background-color: #5b253d; transform: scale(1.05); }
 
-  /* ---------- FINAL ---------- */
-  .final h1 {
-    font-size: 1.6rem;
-    max-width: 700px;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  .final .signature {
-    font-style: italic;
-    font-size: 1.1rem;
-    color: #7a3b56;
-    margin-bottom: 3rem;
-  }
+  .final h1 { font-size: 1.6rem; max-width: 700px; line-height: 1.8; margin-bottom: 2rem; text-align: center; }
+  .final .signature { font-style: italic; font-size: 1.1rem; color: #7a3b56; margin-bottom: 3rem; }
 
   @media(max-width:640px){
     h1 {font-size: 1.6rem;}
@@ -222,18 +169,15 @@
 </head>
 <body>
 
-<!-- ✅ Background Music -->
 <audio id="bgAudio" autoplay loop></audio>
 
 <!-- INTRO -->
 <section id="intro" class="active">
   <div class="card">
     <h1>This space holds five poems.</h1>
-    <div class="line l1">Each one belongs to a phase — a beginning, a becoming, a bond, a memory, and a moment that stayed.</div>
-    <div class="line l2">Nothing to decode here.</div>
-    <div class="line l3">Just moments that meant something, arranged gently in their own time.</div>
-    <div class="line l4">Start wherever you wish.</div>
-    <div class="line l5">You’ll find a bit of us in each.</div>
+    <div class="line">Each one belongs to a phase — a beginning, a becoming, a bond, a memory, and a moment that stayed.</div>
+    <div class="line">Start wherever you wish.</div>
+    <div class="line">You'll find a bit of us in each.</div>
     <button class="begin" onclick="goTo('menu')">Begin →</button>
     <div class="signature">for Payal.</div>
   </div>
@@ -246,8 +190,8 @@
     <div class="menu-card" onclick="goTo('spark')"><span>1. Naram Par Atoot</span></div>
     <div class="menu-card" onclick="goTo('calm')"><span>2. Thehraav Mein Taqat</span></div>
     <div class="menu-card" onclick="goTo('friend')"><span>3. Sahaj Aur Sacchi</span></div>
-    <div class="menu-card" onclick="goTo('love')"><span>4. Sukoon Bhari Yaad</span></div>
-    <div class="menu-card" onclick="goTo('moment')"><span>5. Us Pal Ka Sukoon</span></div>
+    <div class="menu-card" onclick="goTo('love')"><span>4. Pehla Pyaar</span></div>
+    <div class="menu-card" onclick="goTo('moment')"><span>5. Yaar Payal</span></div>
   </div>
 </section>
 
@@ -258,77 +202,104 @@
 Woh kehti hai,
 “Main thodi weird hoon.”
 Shayad isiliye vo samajh nahi aati,
-per mehsoos hojati hai.
+par mehsoos ho jaati hai.
 
-Woh sabse alag hai  
-shaant, par mazboot.
-Uske andaaz mein masti hai,
-aur soch mein gehraai.
+Usme kuch alag hai —
+shaant, par mazboot;
+jaise leher bhi ruk jaaye uski soch ke aage.
 
-Usme ek ajeeb sa sukoon hai,
-jaise zindagi ne use thoda zyada samjhaya ho.
-Na shor, na dikhawa,
-sirf ek noor, jo sab keh jaata hai.
+Uske andaaz mein halki si masti hai,
+aur nazron mein ek gehra samandar —
+badi bhuri gehri aankhein,
+jo muskaan ke saath sunehri chamak uthaati hain,
+jaise dil mei savera hogaya ho.
 
+Uski hansi mein halki si khanak hai —
+jaise roshni ne ghungroo baandh liye ho.
+Kabhi kuch kehna bhi zaroori nahi lagta,
+bas uske hone se sannata bhi zinda lagne lagta hai.
+
+Kabhi kabhi voh bhi thak jaati hai,
+par uski roshni kabhi nahi rukta —
+woh andheron ko bhi ujala dene ka junoon rakhti hai,
+chahe uske khud ke haath hi kyu na jal jaayein.
+
+Par uski thakaan bhi ek roshni thi
 Taqat agar insaan hoti,
-to woh Payal jaise hoti 
-narm, par atoot;
-bal bhi, aur shanti bhi.
+to woh uske jaisi hoti —
+naram bhi, atoot bhi.
 
 Usne sikhaya,
-ki taqat ko ghamand se nahi,
-sahajta se jeena chahiye.
+ki taqat ko shor nahi chaahiye;
+bas apne aaspaas sab kuch santulit kar dene ki himmat chaahiye.
+
+Kabhi kabhi main bhi uski khamoshi mein baith kar samajhta hoon,
+shor kam karne ke liye awaaz nahi, bas niyat badalni padti hai.
+
+Aur main sochta hoon,
+kya kabhi main bhi aisa ho paunga —
+shaant, par mazboot, bilkul uske jaisa.
+
+Woh nahi ghabraati thi —
+na kal se, na kismet se.
+Shayad use pata tha,
+kuch taaqatein humse nahi, humare saath chalti hain.
+Uska vishwas aisa tha,
+jaise har raaste ke mod par
+koi roshni use dekh kar muskurati ho.
 
 Woh hi to hai,
-ek roshni jo jalaati nahi,
-par aaspaas sab kuch roshan kar deti hai.
+ek ujala jo jalaata nahi,
+par aaspaas sab kuch roshan kar deta hai.
   </div>
-  <div class="transition">“Aur shayad isi liye, uske hone se duniya thodi behtar lagti hai.”</div>
+  <div class="transition">“Some lights don’t burn — they just brighten everything around them.”</div>
   <div class="buttons">
-    <button onclick="goTo('menu')">Back to All Poems</button>
-    <button onclick="goTo('calm')">Next Phase →</button>
+    <button onclick="goTo('menu')">Back</button>
+    <button onclick="goTo('calm')">Next →</button>
   </div>
-</section>
-
 <!-- POEM 2 -->
 <section id="calm" class="poem-page">
   <h1>Thehraav Mein Taqat</h1>
   <div class="poem">
-Kuch log shor mein bhi thehraav laate hain,
-woh unmein se ek thi.
-Na kuch zyada, na kuch kam,
-bas jitni zarurat thi duniya ko sambhalne ki.
+Shor se bhara tha din,
+aur phir voh aayi —
+jaise thak chuki hawaon ko
+kisi ne halka sa sahla diya ho.
 
-Uske har lafz mein ek narmi thi,
-jo gusse ko bhi soch mein badal deti.
-Jaise har mushkil ke andar
-ek halki si roshni chhupa di ho usne.
+Uske hone se afra-tafri bhi sambhal jaati thi,
+log dheere bolne lagte,
+aur jazbaat soch ban jaate.
+Jaise uski nazar ke aas-paas
+duniya ne thoda sa santulan seekh liya ho.
 
-Woh sikhati thi bina shabd ke,
-ki taqat awaaz se nahi,
-santulan se dikhai jaati hai,
-aur izzat, sirf bartav se milti hai.
+Kabhi keh kar samjhaati thi,
+kabhi sirf dekhti rehti —
+uske lafzon mein nami thi,
+aur moun mein gehraai.
 
-Uske andaaz mein ek sukoon tha,
-na dikhawa, na dabav.
-Bas ek halka sa noor,
-jo sab kuch aasaan bana deta tha.
+Jab main uljhanon mein bhatakta tha,
+voh kehti, “Jo badal sakta hai, us par kaam karo,
+jo nahi, us se jeena seekho.”
+Aur tab lagta —
+zindagi utni kathin nahi jitni main soch leta hoon.
 
-Kabhi kabhi sochta hoon,
-kaise itni shaanti ek insaan mein sama sakti hai.
-Jaise zindagi ne use
-thoda zyada samjha diya ho baaki sabse.
+Usne sikhaya, taqat awaaz nahi hoti —
+woh ek ehsaas hoti hai,
+jahan sirf uske hone se sab kuch sambhal jaata hai.
 
-Aur pata nahi kaise,
-par uski wo shaant si seekh
-meri zindagi ka hissa ban gayi.
-Ab har afra-tafri mein,
-main usi jaisa thehraav dhoondhta hoon.
+Kabhi uske saath baith kar samjha,
+thehraav bolta nahi — bas behta hai.
+Uske saath hone par lagta tha,
+jaise saans bhi apni raftaar bhool jaati ho.
+
+Ab jab zindagi tez bhaagti hai,
+main us jaise thehraav dhoondhta hoon —
+jo shabd se nahi,
+ek muskaan se raah mil jaaye.
   </div>
-  <div class="transition">“Zindagi ke daud mein, usne thehraav likh diya.”</div>
+  <div class="transition">“In her stillness, life learned balance.”</div>
   <div class="buttons">
     <button onclick="goTo('spark')">← Back</button>
-    <button onclick="goTo('menu')">Back to All Poems</button>
     <button onclick="goTo('friend')">Next →</button>
   </div>
 </section>
@@ -337,175 +308,221 @@ main usi jaisa thehraav dhoondhta hoon.
 <section id="friend" class="poem-page">
   <h1>Sahaj Aur Sacchi</h1>
   <div class="poem">
-Kuch log shor nahi karte,
-bas saath ban jaate hain zindagi ka.
-Woh aisi hi thi 
-bina kahe sab mehsoos kara jaane wali.
+Shayad har kahani mein ek aisa insaan hota hai,
+jo shor nahi karta, par sab mehsoos karta hai.
+Jo saath dikhata nahi, par kabhi chhodta bhi nahi.
+Woh aisi hi thi — sahaj bhi, aur sacchi bhi.
 
 Har mushkil mein, bina bulaye aa jaati thi,
-jaise zimmedaari nahi, aadat ho sambhalne ki.
+jaise sambhalna uski aadat ho, farz nahi.
 Uske hone se duniya ka shor
-thoda shaant ho jaata tha.
+thoda thahar jaata tha,
+par iss baar, uski chup mein sukoon nahi,
+ek samajh thi.
 
-Uska saath koi likha hua wada nahi tha,
-par har pal nibhaya gaya jaise dua nibhaayi jaati ho.
-Bina shart, bina awaaz,
-sirf ek sachcha ehsaas tha.
+Kabhi hans ke rokti thi, kabhi daant ke samjha deti thi —
+aur jab sab theek ho jaata,
+toh hasti hue keh deti,
+“ab mila na ‘primary data’?”
+jaise mazaak ke andar hi sabak chhupa ho.
 
-Kabhi hans ke rokti thi, kabhi daant ke samjha deti thi 
-jaise sambhalna uske jeene ka tarika tha.
 Dosti uske liye farz nahi thi,
 woh to ek rishta tha jo dil se nibhaaya gaya.
 
-Aur jab log samajhne se pehle hi faisla suna dete the,
-woh un sab ke beech khadi rahi 
-mujhe samajhne ke liye,
-mujhe todne ke bajaye, jodne ke liye.
+Jab log andaazon se faisle banate the,
+woh unke beech nishabd khadi rehti —
+nazar mein woh yakeen hota,
+jo lafzon se zyada sambhal leta tha.
 
-Kya kehte hain aise logon ko?
-Jo dost se badhkar, dua lagte hain 
-jo apne hone se hi
-tumhe behtar bana dete hain.
+Un dino duniya poochti thi,
+“tum dono ke beech aisa kya hai?”
+Aur mujhe samajhne mein waqt lag gaya —
+ki kuch rishte jazbaat nahi,
+ek dua ki tarah jeeye jaate hain.
+
+Kabhi uske saath baith kar mehsoos hua,
+ki kuch log zindagi mein “kab tak” ke liye nahi,
+“kaise” ke liye milte hain —
+kaise behtar banna hai, kaise sambhalna hai.
+
+Tab samjha, uski khamoshi bhi ek bojh thi,
+har sach uske andar ghoomta rehta tha,
+aur duniya use sirf thehraav samajh baithi thi.
+
+Aur tab samjha —
+sach aur sahaj hona alag cheez nahi,
+woh to ek hi prakash ke do rang hain;
+ek dil ko roshan karta hai,
+aur ek zindagi ko.
   </div>
-  <div class="transition">“Kabhi kabhi ek insaan sirf dost nahi hota, poori zindagi ka sabse khubsoorat jawab hota hai.”</div>
+  <div class="transition">“Sometimes a person isn’t just a friend — they’re the quietest, truest answer to your life.”</div>
   <div class="buttons">
     <button onclick="goTo('calm')">← Back</button>
-    <button onclick="goTo('menu')">Back to All Poems</button>
     <button onclick="goTo('love')">Next →</button>
   </div>
 </section>
 
 <!-- POEM 4 -->
 <section id="love" class="poem-page">
-  <h1>Sukoon Bhari Yaad</h1>
+  <h1>Pehla Pyaar</h1>
   <div class="poem">
-Usse milna, jaise pehli dafa dil ka darwaza khula ho,
-zameen se judi, par sapno jaisi.
-Jo raat ke teen baje bhi uth ke keh deti thi, “Safe flight, I love you,”
-aur jab phone chori ho gaya tha, toh bina kahe naya laa di thi.
+Pehle toh laga,
+pyaar sirf kahaniyon ka jadoo hota hai —
+jahan sab kuch likha hua lagta hai,
+par mehsoos kabhi nahi hota.
 
-Woh sirf pyaar nahi karti thi, woh pyaar ko jeeti thi 
-Teej waale din tithi ke hisaab se wish karne par bhavuk ho jaane wali,
-aur Shivling ko dil se apnane wali,
-jaise har dua uske haath se nikal kar, seedha mujhe milti ho.
+Phir voh mili —
+aur har kissa asli ban gaya.
 
-Woh apni duniya khud sambhalne wali thi,
-apni ladai khud ladti thi.
-Phir bhi, pata nahi kaise,
-mujhe apni kahani ka chhota sa hissa bana liya,
-aur bas wahi, mere liye sab kuch tha.
+Uske saath sab kuch halkasa ho jaata —
+din ka shor bhi,
+raat ka bojh bhi.
 
-Main kabhi uska savior banna nahi chahta tha,
-sirf itna chahta tha, ki jab duniya uljhe,
-main uske paas khada rahoon,
-tab tak, jab tak woh khud raasta dhoondh le.
+Woh baat karti, toh duniya thodi dheemi ho jaati,
+jaise waqt uski awaaz ka intezaar kar raha ho.
 
-Train rides, vada anna waale breaks, bowling nights,
-pasta, Vasu ka sandwich sab yaadon ke thaal mein ab bhi garam hain.
-Vo papa ke phone se chupke message karti thi,
-bhale bimar ho, taaki uska buddhu pareshan na ho.
+Uske haath pakadne mein
+ek ajeeb sa sukoon tha —
+na koi drama,
+na koi daawa,
+bas woh, main,
+aur beech mein ek sannata,
+jo dono ke dilon ke liye kafi tha.
 
-Usne kabhi kaha tha,
-“Jo aapne do mahine mein mehsoos karaya,
-vo saalon mein koi nahi kar saka.”
-Aur main aaj bhi shukriya kehna chahta hoon,
-ke usne mujhe apne bharose ke laayak samjha.
+Kabhi voh zid karti,
+bachchon jaisi masoomi se kehti —
+“please please please!”
+
+Aur main hamesha maan jaata,
+kyunki uski har zid mein
+mohabbat chhupi hoti thi.
+
+Uske pyaar mein main mehfooz bhi tha,
+aur naya bhi.
+Har roz kuch aur seekhta —
+khud ke baare mein,
+aur uske dil ke andar chhupe sansaar ke baare mein.
+
+Kabhi kabhi woh bhi thak jaati thi —
+apne lafzon ke beech khud se ladti thi,
+aankhon mein thoda sa dard,
+par chalne ka jazba usse zyada gehra.
+
+Usne kabhi kisi “knight in shining armour” ka intezaar nahi kiya,
+bas apne zakhmon pe ujala rakhna seekh liya.
+
+Phir bhi, jab main uske paas chupchaap khada tha,
+usne mujhe apni shaanti ke daayre mein sameta.
+
+Aur main aaj bhi shukriya karta hoon,
+ki usne apni taqat ke beech
+mere hone ki jagah banayi.
+
+Uske saath hone ka matlab tha
+bas ek baat samajhna —
+ke pyaar sirf sundar logon ka nahi hota,
+pyaar toh unka hota hai
+jo toot kar bhi kisi ko poora kar dete hain.
+
+Ab jab bhi hawa chalti hai,
+lagta hai uske haath meri gardan ke paas phir ghoom gaye hain,
+ussi nazakat se,
+jaise kehti ho —
+“Aap safe ho, Buddhu.”
+
+Aur tab samajh aata hai —
+pyaar woh nahi jo zindagi badalta hai,
+pyaar toh woh hai,
+jisme aap poore ban jaate ho.
   </div>
-  <div class="transition">“Kuch kahaniyaan khatam nahi hoti, sirf thoda ruk jaati hain sahi waqt ka intezaar karte hue.”</div>
+  <div class="transition">“Love doesn’t complete you; it reminds you that you were whole all along.”</div>
   <div class="buttons">
     <button onclick="goTo('friend')">← Back</button>
-    <button onclick="goTo('menu')">Back to All Poems</button>
     <button onclick="goTo('moment')">Next →</button>
   </div>
 </section>
 
 <!-- POEM 5 -->
 <section id="moment" class="poem-page">
-  <h1>Us Pal Ka Sukoon</h1>
+  <h1>Yaar Payal</h1>
   <div class="poem">
-Kabhi kabhi zindagi aise mod laati hai,
-jahan sab kuch jo kahaniyon sa lagta tha sach hone lagta hai.
-Kuch aisa hi tha woh pal… 
-jaise kisi nāstik ko, achanak ishwar mil gaya ho.
+Yaar Payal,
 
-Tab samjha, duniya waise toh poori thi,
-par maayne tab aaye, jab aap usme the.
+Aap soch rahe hoge —
+main already chaar poem likh chuka hoon
+aapke baare mein, ab aur kya baaki reh gaya hai?
 
-Phir aap mili 
-aur muskaan ke peeche ka shor pehchaan liya.
-Main woh “chocolate boy of the office” tha,
-sabko lagta tha, muskaan se duniya sambhal leta hoon.
+Par aap nahi jaanti,
+aapke baare mein kehne ke liye
+mere paas alfaazon se zyada ehsaas hain.
 
-Kabhi aapka “touchwood” sunn kar muskurata hoon 
-kaise har khushi ke saath aapne dua bhi jod di.
+Kisi ke liye aap chulbuli shaitaan ho,
+kisi ke liye sahej samjhi hui.
+Kisi ko aapki bebak baatein atpati lagti hain,
+toh kisi ko kuch zyada hi chatpati.
+Par yaar aapki kasam,
+mujhe aapki har baat achchi lagti hai.
 
-Aapke saath hi maine upwaas rakhna shuru kiya,
-aapke saath hi aastha mehsoos ki,
-jaise aapki mohabbat ne manne khud se milwa diya ho.
+Sachmei thode weird toh ho aap —
+hasti ho toh duniya bhool jaati hai aur sabko hasa deti ho,
+roti ho toh akele mein ghut jaati ho.
+Kabhi bina baat ke bahut khush ho jaati ho,
+toh kabhi bina warning shant ho jaati ho.
 
-Aap meri wallpaper ho,
-chat mein pinned rehne wali,
-aur har password ke har akshar mein chhupi ek dua si.
-Jab bhi notification mein aapka naam chamak jaaye,
-poora din ek chhoti si kahani ban jaata hai.
+Aap ek raaz ho — khulte nahi kisi ke saamne.
 
-Aur sirf memes share karna bhi
-ek ajeeb sa sukoon de jaata hai bas aapki wajah se.
+Dikhti sabko ho, par nazar kisi ko aati nahi.
+Tod dena chahti ho khud ko kisi mein,
+par bharosa karne se pehle dil hamesha rok leta hai.
 
-French fries par khushi,
-caramel popcorn pe seedha muh fula lena 
-itni chhoti chhoti baatein bhi yaad rehti hain,
-shayad isiliye, kyunki aapke bina sab kuch adhoora lagta hai.
+Mujhe shayad aapke baare mein sab kuch nahi pata,
+par pata nahi kyun, aapke baare mein sab kuch pata lagta hai.
 
-Main jaanta hoon… aap raz ho khulti nahi ho kisi ke saamne.
-Jo dikhati ho gambhir,
-andar se poore dil mein bachpana sambhal rakha hai.
-Sabko dikh jaati ho, par samajh koi nahi paata.
-Dil todne ka darr hai, isiliye bharosa bhi sambhal kar karti ho.
-Aankhein sab keh jaati hain,
-par alfaaz kabhi zubaan tak nahi pahunchne dete.
+Aapki aankhein bahut kuch kehti hain,
+par alfaaz tak baatein aane nahi deti.
+Ghabrati ho —
+agar duniya sunn legi inhe,
+toh shayad aapko samjhegi nahi.
 
-Train rides, vada anna waale breaks, bowling nights, pasta, Vasu ka sandwich,
-aur papa ke phone se chupke bheja gaya wo message 
-sirf isiliye, taaki aapka buddhu pareshan na ho.
+Mujhe pata hai, duniya abhi thodi na-insaaf lag rahi hai —
+aur roz ek 23 saal ka buddhu bhi aake pareshan kar raha hai.
+Sab kuch ek saath badal raha hai,
+aur aap bas saans le kar sambhalne ki koshish kar rahi ho.
 
-Main maanta hoon, aapka safar aasaan nahi hai.
-Phir bhi, saath chalne ka khayal hi kuch sukoon de jaata hai.
-Leo aur Aries, Mulank 1 aur 5 bilkul Kohli aur Anushka jaise,
-shayad kismat ne humara raasta pehle hi likh diya tha.
+Par yakeen maano,
+sab theek ho jaata hai —
+hamesha hota hai.
 
-Aur agar nahi bhi likha…
-toh chalo, haath thamkar likhte hain,
-dheere-dheere, bas saath-saath
-aur dekhein, kahan tak jaate hain.
+Aapne pehle bhi sabse andheri raaton ko dekha hai,
+aur phir bhi roshni ban kar nikli ho.
 
-Aasan nahi hai aapse pyaar karna,
-par aapko jaanke pyaar na karna,
-uss se bhi ghani mushkil hai.
+Yeh waqt bhi bas ek mod hai, ek rukawat nahi.
+Payal, aap ladne wali nahi — jeetne wali ho.
 
-Kabhi kabhi lagta hai,
-shayad zindagi hum dono ko phir milwa degi
-different time, same souls.
-Par agar aap poochho,
-toh main kahunga please, abhi laut aao, baisa.
+Kabhi kabhi, jab dil thak jaata hai sab kuch samjhane se,
+toh khamoshi khud ek prarthana ban jaati hai.
+Us waqt bas apne aap ko bhagwan ke hawaale kar dena —
+woh hi to hai jo toofan ke beech kishti ko kinare tak laata hai.
 
-Kyunki kuch kahaniyaan rukti hain,
-khatam nahi hoti.
+Aur jab ye toofan halka sa tehar jaaye aur phir door se zameen dikhe,
+toh shayad aap mujhe wahin dekhengi, kinare par, haath hilaate hue,
+intezaar mein, poori shiddat se muskurata hua, do cup chai ke sath.
 
-Aur agar kabhi mere baare mein socho,
-toh bas yaad rakhna
-main wahi hoon,
-jo har dua mein aapka naam ab bhi leta hai,
-bina shart, bina shor,
-sirf ek umeed ke saath
-ki kabhi na kabhi,
-aap phir keh do,
-“Safe flight, I love you, Buddhu.”
+I really hope, the faith you brought to me,
+brings you back to me.
+Kyunki — hum toh teh hi Lodha ke Anuskha aur Kohli,
+Mulank 1 aur 5, Leo aur Aries,
+ek ajeeb si jodi,
+par bilkul apni kismat ke hisaab se likhi hui.
+
+Aur haan —
+aasan nahi hai aapse pyaar karna,
+par aapko pyaar na karna,
+uss se bhi zyaada mushkil hai.
   </div>
-  <div class="transition">“Woh sirf ek pal tha, par samajh aa gaya — sukoon waqt se nahi, insaan se milta hai.”</div>
+  <div class="transition">“Some stories never end; they just wait for the right time to continue.”</div>
   <div class="buttons">
     <button onclick="goTo('love')">← Back</button>
-    <button onclick="goTo('menu')">Back to All Poems</button>
     <button onclick="goTo('final')">Next →</button>
   </div>
 </section>
@@ -513,59 +530,21 @@ aap phir keh do,
 <!-- FINAL -->
 <section id="final" class="final">
   <h1>If you ever lose your calm,<br>remember — you are someone’s peace.</h1>
-  <div class="signature">-Abhinav</div>
+  <div class="signature">- Abhinav</div>
   <button onclick="goTo('intro')">Back to Intro</button>
 </section>
 
-<!-- 🎧 MUSIC CONTROL BUTTON -->
-<button id="toggleMusic" style="
-  position: fixed;
-  bottom: 20px;
-  right: 25px;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  background: rgba(75,46,46,0.8);
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-">⏸</button>
-
-<!-- SCRIPT -->
 <script>
   const sections = document.querySelectorAll("section");
   const bgAudio = document.getElementById("bgAudio");
-
-  let fadeInterval;
   let currentTrack = "";
-
-  // Fade helper
-  function fadeAudio(targetVolume, duration, callback) {
-    clearInterval(fadeInterval);
-    const startVolume = bgAudio.volume;
-    const step = (targetVolume - startVolume) / (duration / 50);
-
-    fadeInterval = setInterval(() => {
-      bgAudio.volume = Math.max(0, Math.min(1, bgAudio.volume + step));
-      if ((step < 0 && bgAudio.volume <= targetVolume) || (step > 0 && bgAudio.volume >= targetVolume)) {
-        clearInterval(fadeInterval);
-        if (callback) callback();
-      }
-    }, 50);
-  }
 
   function playMusic(trackSrc, volume = 0.4) {
     if (currentTrack === trackSrc) return;
     currentTrack = trackSrc;
-
-    fadeAudio(0, 1500, () => {
-      bgAudio.src = trackSrc;
-      bgAudio.play().catch(() => {});
-      fadeAudio(volume, 1500);
-    });
+    bgAudio.src = trackSrc;
+    bgAudio.volume = volume;
+    bgAudio.play().catch(()=>{});
   }
 
   function goTo(id) {
@@ -585,11 +564,10 @@ aap phir keh do,
     document.body.style.background = bgs[id];
 
     const base = "https://raw.githubusercontent.com/tabhinav729-stack/the-four-phases-of-knowing-you/main/audio/";
-
     switch(id) {
       case "intro":
       case "menu": playMusic(base + "intro+menua.mp3", 0.35); break;
-      case "spark": playMusic(base + "poem 1a.mp3", 0.38); break;
+      case "spark": playMusic(base + "poem1a.mp3", 0.38); break;
       case "calm": playMusic(base + "poem2a.mp3", 0.38); break;
       case "friend": playMusic(base + "poem3a.mp3", 0.4); break;
       case "love": playMusic(base + "poem4a.mp3", 0.4); break;
@@ -597,23 +575,5 @@ aap phir keh do,
       case "final": playMusic(base + "poem6a.mp3", 0.35); break;
     }
   }
-
-  // Pause/Play control
-  const toggleBtn = document.getElementById("toggleMusic");
-  let isPlaying = true;
-
-  toggleBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      fadeAudio(0, 1200, () => bgAudio.pause());
-      toggleBtn.textContent = "▶️";
-    } else {
-      bgAudio.play();
-      fadeAudio(0.35, 1200);
-      toggleBtn.textContent = "⏸";
-    }
-    isPlaying = !isPlaying;
-  });
 </script>
 
-</body>
-</html>
